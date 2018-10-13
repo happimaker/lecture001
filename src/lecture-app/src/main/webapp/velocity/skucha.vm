@@ -1,0 +1,12 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+</head>
+<body>
+#if ( $exceptionType.equals("RuntimeException") )
+<h1>Runtime</h1>
+#end
+System nie ogarnął tej kuwety, rzygając ot takim błędem:<br/>
+$!exception
+</body>
+</html>
