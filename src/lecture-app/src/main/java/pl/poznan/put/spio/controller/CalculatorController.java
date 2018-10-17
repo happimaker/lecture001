@@ -19,20 +19,11 @@ public class CalculatorController {
 
 	private Calculator calculator = new CalculatorImpl();
 
-	@RequestMapping(value = "/add/{arg1}+{arg2}", method = RequestMethod.POST)
+	@RequestMapping(value = "/add/{arg1}+{arg2}")
 	public CalculatorResponse add(@PathVariable Long arg1, @PathVariable Long arg2) {
 		LOGGER.info("arg1: {}, arg2: {}", arg1, arg2);
 		CalculatorResponse response = new CalculatorResponse();
 		response.setResult(new Double(calculator.add(arg1, arg2)));
-		LOGGER.info("out: {}", response);
-		return response;
-	}
-
-	@RequestMapping("/div/{arg1}/{arg2}")
-	public CalculatorResponse divide(@PathVariable Long arg1, @PathVariable Long arg2) {
-		LOGGER.info("arg1: {}, arg2: {}", arg1, arg2);
-		CalculatorResponse response = new CalculatorResponse();
-		response.setResult(calculator.div(new Double(arg1), new Double(arg2)));
 		LOGGER.info("out: {}", response);
 		return response;
 	}
