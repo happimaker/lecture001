@@ -5,7 +5,8 @@ title: Testowanie oprogramowania
 # Wprowadzenie do testowania
 
 ```mermaid
-graph LR
+graph TD
+    przyczyna --> skutek
     przyczyna("Przyczyna: Błąd – usterka (defekt, pomyłka, rozbieżność) w programie, która może skutkować nieprawidłowym (tj. niezgodnym z oczekiwaniami użytkownika) działaniem")
     skutek("Skutek: Błędne wykonanie (awaria) – niepoprawne działanie programu w trakcie jego pracy")
 ```
