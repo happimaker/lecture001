@@ -37,8 +37,26 @@ graph TD
 
 Istotnymi czynnikami mającymi wpływ na powstawanie błędów wprogramach jest ich rosnąca złożoność i wielkość.
 
+## Kontekst i zrozumienie
 ![projekt](img/projekt.png "Projekt")
 
+## Błędy w programie można rozpatrywać na poziomie: 
+ - mechanizmu powstawania błędu (error), związanego najczęściej zfazą analizy wymagań i projektowania (błędne założenia projektowe, niewłaściwa interpretacja specyfikacji, dobór niewłaściwego algorytmu, itp.) 
+ - programowym (fault), związanym najczęściej z fazą implementacji (błędy programisty)
+ - użytkowym ( failure ), kiedy można zaobserwować błędne działanie funkcji program
+
+## Szacunkowe koszty błędów
+
+Dynamiczny rozwój branży IT powoduje obserwowalne i rosnące koszty będące skutkami błędów w programach
+
+
+| Faza           | Koszt [EUR] | czas naprawy [h] |
+| ---            |  ------     | ---------:       |
+| Analiza        | 1           | 0.1              |
+| Projektowanie  | 5           | 0.5              |
+| Kodowanie      | 10          | 1                |
+| Testowanie     | 15-50       | 1.5-5            |
+| Wdrożenie      | >100        | >10              |
 
 
 
