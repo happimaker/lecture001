@@ -5,10 +5,8 @@ title: Testowanie oprogramowania
 # Wprowadzenie do testowania
 
 ```mermaid
-graph LR;
-    subgraph "Przyczyna";
-    przyczyna;
-    skutek;
+graph LR
+    przyczyna
 ```
 
 
