@@ -63,17 +63,38 @@ Dynamiczny rozwój branży IT powoduje obserwowalne i rosnące koszty będące s
    - Liczba błędów znalezionych w programie – 1000 
    - Liczba błędów znalezionych przez deweloperów – 750 
    - Liczba błędów znalezionych przez użytkowników – 250 
-   - Średni koszt wykrycia i naprawy błędu: przed wdrożeniem – 10, po wdrożeniu – 250
+   - Średni koszt wykrycia i naprawy błędu: przed wdrożeniem – 10€, po wdrożeniu – 250€
    - Koszt zapewnienia jakości: 750 * 10€ + 250 * 250€ = 70 000€
  - Scenariusz #2:
    - Liczba błędów znalezionych w programie – 1000 
    - Liczba błędów znalezionych przez deweloperów – 750 
    - Liczba błędów znalezionych przez testerów – 200 
    - Liczba błędów znalezionych przez użytkowników – 50 
-   - Średni koszt wykrycia i naprawy błędu: przed testowaniem – 10, w fazie testowania – 50, po wdrożeniu – 250
+   - Średni koszt wykrycia i naprawy błędu: przed testowaniem – 10€, w fazie testowania – 50€, po wdrożeniu – 250€
    - Koszt przygotowania i przeprowadzenia testów – 10 000
    - Koszt zapewnienia jakości: 750 * 10€ + 200 * 50€ + 50 * 250€ + 10 000€ = 40 000€
 - Wniosek: Naprawa błędnego oprogramowania jest droższa (finansowoi marketingowo) niż koszt pracy testerów
+
+## Podstawowe pojęcia
+ - Testowanie oprogramowania to wykonanie kodu dla różnych kombinacji danych wejściowych i stanów, mające na celu wykrycie błędów w programie
+ - Zasadniczym celem testowania jest dążenie do uzyskania odpowiednio wysokiego poziomu niezawodności i jakości oprogramowania, stosownie do zdefiniowanych wymagań, ograniczeń czasowych i kryteriów ekonomicznych
+ - Testowanie powinno umożliwiać wykrycie jak największej liczby błędów → wzrost niezawodności programu
+ - Testowanie powinno zapewniać na jak najwcześniejsze wykrycie błędów → redukcja kosztów naprawy błędów
+ - Test zakończony sukcesem to test, którego skutkiem jest wykrycie nieznalezionego dotychczas błędu w programie 
+ - Test uznaje się za efektywny, jeżeli ma zdolność wykrycia jaknajwiększej liczby błędów zjak największym prawdopodobieństwem
+ - Uruchamianie programów („odpluskwianie”, debugowanie) jest działaniem mającym na celu zlokalizowanie, a następnie poprawienie wykrytych w trakcie testowania błędów 
+ - Do uruchamiania programów wykorzystuje się przypadki testowe zaprojektowane w taki sposób, aby były pomocne wznajdowaniu przyczyny błędu 
+ - Uruchamianie programów jest procesem, w trakcie którego formułuje się, a następnie weryfikuje praktycznie hipotezy, dotyczące przyczyn błędnego działania programu 
+ - W trakcie debugowaniabardzo pomocne jest doświadczenie iwiedza, dotycząca typowych błędów programistycznych
+
+## Podstawowe zasady
+  - podczas testowania ważniejsze jest sprawdzenie typowych przypadków użycia programu, niż przypadków rzadkich (skrajnych) 
+  - testowanie istniejącej funkcjonalności programu powinno być ważniejsze od testowania nowej funkcjonalności 
+  - należy unikać testowania przez autorów oprogramowania 
+  - należy dokumentować testy i zasady ich użycia 
+  - należy zbierać i poddawać analizie wyniki testów 
+  - trzeba uwzględniać w testach zarówno poprawne, jak i niepoprawne dane wejściowe oraz warunki wykonania 
+  - należy sprawdzać, nie tylko czy w trakcie działania program wykonuje to co powinien, ale także czy nie wykonuje tego, czego nie powinien
 
 
 
