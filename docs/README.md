@@ -6,6 +6,7 @@ title: Testowanie oprogramowania
 
 ```mermaid
 graph LR
+    subgraph "Przyczyna"
     przyczyna
 ```
 
