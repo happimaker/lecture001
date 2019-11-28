@@ -11,6 +11,35 @@ graph TD
     skutek("Skutek: Błędne wykonanie (awaria) – niepoprawne działanie programu w trakcie jego pracy")
 ```
 
+ - Skutkiem błędu w programie może być wiele jego błędnych wykonań 
+ - Takie samo błędne wykonanie programu może być skutkiem różnych błędów
+
+ ## Najbardziej spektakularne błędy w programach oraz ich skutki
+  - 1988: Zestrzelenie samolotu Airbus A320 – śmierć 290 osób 
+  - 1991: Błąd naprowadzania rakiet Patriot – śmierć 28 osób 
+  - 1994: Błąd dzielenia zmiennoprzecinkowego w procesorze Pentium – koszt ok. 475 000 000 USD 
+  - 1996: Katastrofa rakiety Ariane5 – koszt ok. 500 000 000 USD 
+  - 1999: Katastrofa sondy kosmicznej Mars Polar Lander 5 – koszt samego lądownika ok. 120 000 000 USD 
+  - 2000: „pluskwa milenijna”
+
+## Kiedy w oprogramowaniu znajduje się błąd? 
+ - Oprogramowanie nie wykonuje czegoś, co według specyfikacji powinno wykonywać 
+ - Oprogramowanie robi coś, czego według specyfikacji nie powinno robić 
+ - Oprogramowanie wykonuje coś, o czym specyfikacja w ogóle nie wspomina 
+ - Oprogramowanie nie wykonuje czegoś, o czym specyfikacja nie wspomina, ale powinna 
+ - Oprogramowanie jest trudne do zrozumienia, trudne do użycia, powolne albo – zdaniem testera – będzie w oczach użytkownika po prostu nieprawidłowe
+
+ ## Źródła powstawania błędów, udział od największych do najmniejszych
+  - Specyfikacja,
+  - Projekt,
+  - Kod,
+  - Inne.
+
+Istotnymi czynnikami mającymi wpływ na powstawanie błędów wprogramach jest ich rosnąca złożoność i wielkość.
+
+![projekt](img/projekt.png "Projekt")
+
+
 
 
 # Literatura
