@@ -58,6 +58,23 @@ Dynamiczny rozwój branży IT powoduje obserwowalne i rosnące koszty będące s
 | Testowanie     | 15-50       | 1.5-5            |
 | Wdrożenie      | >100        | >10              |
 
+## Czy testowanie się opłaca?
+ - Scenariusz #1: 
+   - Liczba błędów znalezionych w programie – 1000 
+   - Liczba błędów znalezionych przez deweloperów – 750 
+   - Liczba błędów znalezionych przez użytkowników – 250 
+   - Średni koszt wykrycia i naprawy błędu: przed wdrożeniem – 10, po wdrożeniu – 250
+   - Koszt zapewnienia jakości: 750 * 10€ + 250 * 250€ = 70 000€
+ - Scenariusz #2:
+   - Liczba błędów znalezionych w programie – 1000 
+   - Liczba błędów znalezionych przez deweloperów – 750 
+   - Liczba błędów znalezionych przez testerów – 200 
+   - Liczba błędów znalezionych przez użytkowników – 50 
+   - Średni koszt wykrycia i naprawy błędu: przed testowaniem – 10, w fazie testowania – 50, po wdrożeniu – 250
+   - Koszt przygotowania i przeprowadzenia testów – 10 000
+   - Koszt zapewnienia jakości: 750 * 10€ + 200 * 50€ + 50 * 250€ + 10 000€ = 40 000€
+- Wniosek: Naprawa błędnego oprogramowania jest droższa (finansowoi marketingowo) niż koszt pracy testerów
+
 
 
 # Literatura
