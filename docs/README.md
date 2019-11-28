@@ -6,8 +6,8 @@ title: Testowanie oprogramowania
 
 ```mermaid
 graph LR
-    subgraph "Przyczyna"
-    przyczyna
+    przyczyna("Przyczyna: Błąd – usterka (defekt, pomyłka, rozbieżność) w programie, która może skutkować nieprawidłowym (tj. niezgodnym z oczekiwaniami użytkownika) działaniem")
+    skutek("Skutek: Błędne wykonanie (awaria) – niepoprawne działanie programu w trakcie jego pracy")
 ```
 
 
