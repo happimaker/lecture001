@@ -129,6 +129,47 @@ graph TD
     wynik(("Wynik testu"))
 ```
 
+ - Kod poddawany testowaniu to: 
+   - implementacja testowana – IUT (Implementation Under Test) 
+   - metoda testowana – MUT (Method Under Test) 
+   - obiekt testowany – OUT (Object Under Test) 
+   - klasa testowana – CUT (Class Under Test) 
+   - składowa testowana – CUT (Component Under Test) 
+   - system testowany – SUT (System Under Test)
+ - Przypadek testowy (Test case) – specyficzny zestaw danych wejściowych, warunków początkowych oraz oczekiwanych wyników iwarunków końcowych, służący do testowania kodu programu
+
+ - Typowe aktywności związane z weryfikacją: 
+   - sprawdzanie, czy wymagania użytkownika są weryfikowalne
+   - sprawdzanie, czy elementy składowe projektu są weryfikowalne zgodnie z wymaganiami użytkownika
+   - testowanie jednostek oprogramowania (modułów)
+   - testowanie modułów po ich integracji
+   - testowanie programu przez jego twórców
+   - testowanie akceptacji programu przez użytkowników
+   - okresowe inspekcje i przeglądy
+   - audyt (kontrola jakości)
+
+ - Testowanie jest jedyną techniką walidacji w odniesieniu do wymagań niefunkcjonalnych, takich jak np. rozszerzalność, bezpieczeństwo, wydajność czy skalowalność systemu
+ - Przeglądy wymagań ( reviews ) są najbardziej efektywną metodą walidacji wymagań
+ - Aby osiągnąć zadowalający poziom weryfikacji i walidacji, konieczne jest stosowanie zarówno techniki statycznej weryfikacji, jak i testowania, wykorzystującego odpowiednio adekwatny zestaw przypadków testowych
+
+## Cele testowania
+ - Ostatecznym celem weryfikacji i walidacji nie jest sprawdzenie, czy kod programu jest wolny od błędów, leczczy będzie on spełniał swoje funkcje i nadawał się dowykorzystania przez użytkownika
+ - Osiągnięcie tak zdefiniowanego celu można utożsamiać zuzyskaniem odpowiedniego poziomu pewnościdziałania programu
+ - Poziom pewności zależy przede wszystkim od:
+   - przeznaczenia oprogramowania (stopnia krytyczności)
+   - oczekiwań użytkowników
+   - uwarunkowań na rynku
+
+# Model V
+
+ - Model V definiuje podstawowe fazy testowania systemu oraz pokazuje ich zależność z fazami projektowania systemu
+ - Podstawowe fazy testowania systemu:
+   - testowanie modułów – testowanie najmniejszych jednostek kodu, realizowane bezpośrednio po zakończeniu ich implementacji
+   - testowanie systemu – testowanie poszczególnych podsystemów oraz systemu jako całości, realizowane po zintegrowaniu modułów składowych
+   - testowanie akceptacji użytkowników – oprogramowanie poddawane jest testowaniu przez przyszłego użytkownika lub niezależny od producenta zespół testowy (testy alfa, testy beta)
+
+![Model V](img/vmodel.svg "Model V")
+
 
 # Literatura
  - Ron Patton, Testowanie oprogramowania, MIKOM, 2002
