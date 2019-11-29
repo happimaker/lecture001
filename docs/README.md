@@ -228,7 +228,7 @@ Odpowiedź: 2<sup>n</sup>+1 → zależność wykładnicza!!!
 Skoro nie da się przetestować wszystkiego, to trzeba pójść na kompromis i wybrać nieduży, lecz reprezentatywny podzbiór danych do testowania Podejmujemy jednocześnie ryzyko, że nie będziemy w stanie wykryć takiego błędu, który objawi się wyłącznie dla takiej kombinacji danych wejściowych, której nie testujemy
 Ile testów potrzeba, aby wykryć jak największą liczbę błędów,zachowując jednocześnie koszty testowania na akceptowalnym poziomie?
 
-![Optimal](omg/optimal.png "Optimal")
+![Optimal](img/optimal.png "Optimal")
 
 ## Im więcej błędów zostało znalezionych, tym więcej błędów pozostaje jeszcze nieznalezionych
 
