@@ -177,27 +177,84 @@ Testowanie w żaden sposób nie jest w stanie wykazać, że oprogramowanie nie z
 „Testing shows the presence, not the absence of bugs” Edsger W. Dijkstra
 >>>
 
-Nawet najprostszego programu nie da się przetestować całkowicie (wyczerpująco)
+## Nawet najprostszego programu nie da się przetestować całkowicie (wyczerpująco)
+
 Przyczyny:
  - ogromna liczba danych wejściowych i wyjściowych
  - ogromna liczba możliwych ścieżek wykonania kodu programu
  - specyfikacja wymagań jest często subiektywna i ocena, czy program działa prawidłowo czy nie, zależy od tego, kto ten program ocenia (użytkownik, obserwator, tester)
  - definicje miar jakości są subiektywne i często trudno mierzalne
 
-## Przykład #1:
+Przykład #1:
 ```
 double sum(int a, int b)
 ```
 
 Zakładając, że typ int jest 32-bitowy, ile mamy kombinacji danych wejściowych?
+
 (0, 0), (0, 1), (0, 2), . . ., (0, 2<sup>32</sup>-1),
+
 (1, 0), (1, 1), (1, 2), . . ., (1, 2<sup>32</sup>-1),
+
 (2, 0), (2, 1), (2, 2), . . ., (2, 2<sup>32</sup>-1),
+
 . . .
+
  (2<sup>32</sup>-1, 0), (2<sup>32</sup>-1, 1), (2<sup>32</sup>-1, 2), . . ., (2<sup>32</sup>-1, 2<sup>32</sup>-1)
 
 Odpowiedź: 2<sup>64</sup> = ~1.8 * 10<sup>19</sup> (zakładając testowanie z szybkością 1test/s, to testowanie zajęłoby ok. 500 miliardów lat)  
 
+Przykład #2
+```
+for (int i = 0; i < n; i++) {
+    if (tab[i] == i % 2) {
+        tab[i]++; 
+    } else {
+        tab[i] = 0;
+    }
+}
+```
+
+Ile potrzeba testów, aby sprawdzić wszystkie ścieżki wykonania kodu?
+
+n = 1 → 3 ścieżki, n = 2 → 5 ścieżek, n = 5 → 33 ścieżki,
+
+n = 10 → 1025 ścieżek, n = 100 → ~1.3 * 10<sup>30</sup> ścieżek, . . .
+
+Odpowiedź: 2<sup>n</sup>+1 → zależność wykładnicza!!!
+
+## Testowanie oprogramowania jest ryzykowne
+
+Skoro nie da się przetestować wszystkiego, to trzeba pójść na kompromis i wybrać nieduży, lecz reprezentatywny podzbiór danych do testowania Podejmujemy jednocześnie ryzyko, że nie będziemy w stanie wykryć takiego błędu, który objawi się wyłącznie dla takiej kombinacji danych wejściowych, której nie testujemy
+Ile testów potrzeba, aby wykryć jak największą liczbę błędów,zachowując jednocześnie koszty testowania na akceptowalnym poziomie?
+
+![Optimal](omg/optimal.png "Optimal")
+
+## Im więcej błędów zostało znalezionych, tym więcej błędów pozostaje jeszcze nieznalezionych
+
+Błędy programistyczne wykazują tendencję do występowania w grupach, co oznacza, że szczególną uwagę należy poświęcać tym fragmentom kodu, w których już wcześniej wykryto jakieś błędy
+
+Przyczyny: 
+ - błędy popełniane przez programistę w trakcie pracy zależą od jego sprawności (kondycji) psychicznej, samopoczucia, itp. 
+ - programiści często powtarzają te same błędy
+ - niektóre fragmenty kodu są bardziej podatne na błędy niż inne
+
+
+## Nie wszystkie znalezione błędy zostaną naprawione
+
+Wykrycie błędu nie oznacza, że automatycznie zostanie on poprawiony
+
+Przyczyny:
+ - brak czasu (są inne ważniejsze zadania do wykonania) 
+ - menadżerowie zarządzający projektem mogą podjąć inną decyzję (napięty harmonogram, zbyt duże koszty naprawy) 
+ - zbyt duże ryzyko związane z koniecznością wprowadzenia bardzo istotnych zmian w oprogramowaniu 
+ - nieopłacalność (błąd ujawnia się bardzo rzadko, ma niską „szkodliwość”, można go w prosty sposób ominąć)
+
+## Trudno jest zawsze jednoznacznie określić, co jest, a co nie jest błędem
+
+Czy błąd, którego skutków nie można zaobserwować pozostaje błędem? Czy zawsze obserwowane zachowanie programu będzie przez wszystkich obserwatorów (programistów, testerów, użytkowników) zinterpretowane w taki samsposób (jakodziałanie prawidłowe albo błędne)?
+
+# Warunki wykrycia błędu
 
 
 # Literatura
