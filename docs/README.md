@@ -170,6 +170,35 @@ graph TD
 
 ![Model V](img/vmodel.svg "Model V")
 
+# Aksjomaty testowania
+Testowanie w żaden sposób nie jest w stanie wykazać, że oprogramowanie nie zawiera błędów, a także nie jest w stanie udowodnić, że program będzie zawsze prawidłowo realizował swoje funkcje.
+
+>>>
+„Testing shows the presence, not the absence of bugs” Edsger W. Dijkstra
+>>>
+
+Nawet najprostszego programu nie da się przetestować całkowicie (wyczerpująco)
+Przyczyny:
+ - ogromna liczba danych wejściowych i wyjściowych
+ - ogromna liczba możliwych ścieżek wykonania kodu programu
+ - specyfikacja wymagań jest często subiektywna i ocena, czy program działa prawidłowo czy nie, zależy od tego, kto ten program ocenia (użytkownik, obserwator, tester)
+ - definicje miar jakości są subiektywne i często trudno mierzalne
+
+## Przykład #1:
+```
+double sum(int a, int b)
+```
+
+Zakładając, że typ int jest 32-bitowy, ile mamy kombinacji danych wejściowych?
+(0, 0), (0, 1), (0, 2), . . ., (0, 2<sup>32</sup>-1),
+(1, 0), (1, 1), (1, 2), . . ., (1, 2<sup>32</sup>-1),
+(2, 0), (2, 1), (2, 2), . . ., (2, 2<sup>32</sup>-1),
+. . .
+ (2<sup>32</sup>-1, 0), (2<sup>32</sup>-1, 1), (2<sup>32</sup>-1, 2), . . ., (2<sup>32</sup>-1, 2<sup>32</sup>-1)
+
+Odpowiedź: 2<sup>64</sup> = ~1.8 * 10<sup>19</sup> (zakładając testowanie z szybkością 1test/s, to testowanie zajęłoby ok. 500 miliardów lat)  
+
+
 
 # Literatura
  - Ron Patton, Testowanie oprogramowania, MIKOM, 2002
