@@ -386,6 +386,101 @@ graph LR
     s2(("S2"))
 ```
 
+| stan/pobudzenie | 0  | 1  |
+| ---             | -- | -- |
+| S1              | S1 | S2 |
+| S2              | S2 | S1 |
+
+#### Tablice decyzyjne i grafy przyczynowo-skutkowe
+Technika wykorzystująca tablice decyzyjne lub grafy przyczynowo-skutkowe bada zachowanie programu dla różnych kombinacji logicznych warunków wejściowych (decyzji logicznych). Podejście to wymaga ujęcia specyfikacji działania programu jako logicznej sieci kombinatorycznej, przedstawionej albo bezpośrednio w postaci tablicy decyzyjnej, albo w postaci grafu przyczynowo-skutkowego, który następnie przekształca się w równoważną mu tablicę decyzyjną, wykorzystując tzw. technikę śledzenia wstecznego.
+
+#### Przypadki użycia
+Technika wykorzystująca przypadki użycia lub scenariusze zastosowania pozwala na tworzenie przypadków testowych na podstawie informacji o programie z punktu widzenia użytkownika. Przypadki użycia opisują interakcje między aktorami a systemem (sekwencje działań użytkowników mające określony cel biznesowy) i są użyteczne do sprawdzania poprawności działania programu, związanego z typowymi aktywnościami użytkowników (badanie przepływów, warunków początkowych i końcowych)
+
+#### Kontrola składni
+Technika wykorzystująca kontrolę składni jest użyteczna do projektowania przypadków testowych na podstawie definicji dziedziny danych wejściowych i/lub dziedziny danych wyjściowych. Kontrolę składni stosuje się najczęściej do weryfikowania poprawności danych złożonych (łańcuchy znaków, formaty plików, struktury rekordów), dla których można zdefiniować formalne reguły sprawdzania ich poprawności, np. w postaci gramatyk formalnych, wyrażeń regularnych, itp. 
+
+#### Kombinacje par parametrów
+Technika wykorzystująca kombinacje par parametrów wejściowych zakłada taki sposób projektowania przypadków testowych, aby przetestować wszystkie możliwe, dyskretne kombinacje każdej pary parametrów wejściowych. Najprostsze błędy w programie są najczęściej związane z przetwarzaniem pojedynczego parametru; drugą najczęściej występującą przyczyną najprostszych błędów są nieprawidłowe interakcje pomiędzy parami parametrów wejściowych, które można wykryć stosując tę technikę. Technika ta stanowi alternatywę dla testowania losowego oraz testowania wyczerpującego dla niewielkich problemów
+
+#### Losowy dobór danych
+Technika oparta na losowym (pseudo-losowym) doborze danych testowych wykorzystuje pseudolosowy algorytm generujący ciąg danych na podstawie pewnej uprzednio przygotowanej sekwencji lub rozkładu wartości. Podejście to jest wykorzystywane do testowania wymagań niefunkcjonalnych takich, jak wydajność lub niezawodność.
+Odmianą tego typu podejścia w odniesieniu do interfejsu użytkownika jest tzw. „małpie testowanie” – metoda  testowania programu polegająca na losowym naciskaniu klawiszy oraz losowym poruszaniu i klikaniu myszką
+
+#### Podsumowanie (black-box)
+ - testy funkcjonalne są powtarzalne
+ - testy funkcjonalne nadają się do wielokrotnego użycia
+ - testowanie funkcjonalne można stosunkowo łatwo zautomatyzować
+ - testowany jest nie tylko sam program, lecz jednocześnie środowisko, w którym się wykonuje
+ - nie wszystkie aspekty działania programu można w ten sposób przetestować
+ - wyniki testów mogą nie być do końca wiarygodne (niedoszacowanie liczby błędów)
+ - przyczyny i lokalizacje odnalezionych błędów nie są znane
+
+### Testowanie strukturalne (white-box)
+ - Podstawowym założeniem testowania strukturalnego jest znajomość sposobu implementacji testowanych funkcji
+ - Testy opracowywane są na podstawie wiedzy o kodzie źródłowym (strukturze programu), a testowanie polega na wprowadzeniu na wejście danych testowych i porównaniu otrzymanych wyników zdanymi oczekiwanymi
+
+```mermaid
+graph LR
+    wejście --> system
+    system --> wyjście
+    wejście("Dane wejściowe (testowe)")
+    system("Testowana funkcja systemu: while(true) {...}")
+    wyjście("Dane wyjściowe")
+```
+
+ - Podstawowym ograniczeniem testów strukturalnych jest to, że nie są one w stanie wykryć błędów wynikających z braku funkcjonalności programu
+ - Testowanie strukturalne można podzielić na:
+   - testowanie dynamiczne (wymagające uruchomienia programu)
+   - testowanie statyczne (nie wymagające uruchomienia programu)
+ - Ogólna strategia przeprowadzania większości testów strukturalnych polega na testowaniu istniejącego kodu, aby:
+   - każda instrukcja zawarta w kodzie źródłowym została wykonana co najmniej jeden raz
+   - niezależnie przetestować każdą funkcję (metodę, procedurę) zdefiniowaną w kodzie źródłowym
+
+Techniki testowania strukturalnego opierają się na analizie:
+ - przepływu danych
+ - pokrycia kodu
+ - strukturalnej kodu
+
+#### Analiza przepływu danych
+Polega na sprawdzeniu sposobu przetwarzania danych wejściowych przez poszczególne fragmenty kodu programu (funkcje, moduły). Porównanie wartości wybranych zmiennych programu na różnych etapach przetwarzania, zwartościami oczekiwanymi lub wartościami niedozwolonymi umożliwia wykrycie iprzybliżone zlokalizowanie błędu
+
+#### Analiza pokrycia kodu
+ - Analiza służy do projektowania przypadków testowych, przeznaczonych do testowania wewnętrznej struktury programu w taki sposób, aby były one w stanie wykonać jak największą część testowanego kodu
+ - Analiza pokrycia kodu może być przeprowadzana z użyciem:
+   - programów śledzących (debugerów), pozwalających obserwować, które instrukcje kodu są wykonywane w trakcie przetwarzania danych testowych
+   - analizatorów pokrycia kodu, które automatyzują proces zbierania informacji o pokryciu kodu przez poszczególne testy, wyświetlają szczegółowe statystyki dotyczące testowania oraz pozwalają na uzyskanie informacji, która część kodu nie została pokryta przez zastosowane testy
+ - Stopień pokrycia kodu jest miarą oceny jakości zestawu testów, pozwalającą na:
+   - oszacowanie, czy program został przetestowany w wystarczającym stopniu
+   - znalezienie minimalnego podzbioru testów (np. do testowania regresyjnego
+ - Podstawowe kryteria projektowania testów pokrycia kodu:
+   - pokrycie wyrażeń (statement coverage)
+   - pokrycie rozgałęzień (branch coverage)
+   - pokrycie ścieżek (path coverage)
+   - pokrycie decyzji (decision coverage)
+   - pokrycie warunków logicznych (branch condition coverage)
+
+
+##### Pokrycie wyrażeń
+Test pokrycia wyrażeń (instrukcji programu) polega na takim doborze danych testowych, aby każda instrukcja wynikająca z grafu sterowania została wykonana co najmniej jeden raz. Tego typu testowanie nie bierze pod uwagę zależności instrukcji sterujących (pętle, instrukcje warunkowe, instrukcje wyboru) od przetwarzanych danych i dlatego uzyskanie w nim 100% pokrycia (tj. wykonanie każdej instrukcji programu) nie oznacza przetestowania wszystkich możliwych ścieżek wykonania programu. Jeżeli każda instrukcja znajduje się w osobnej linii kodu źródłowego, to taki test jest równoważny testowi pokrycia wierszy programu (linii kodu)
+
+Przykład
+```
+  a = 10;
+  if (x > 0 && y < 5) 
+    y = a * x;
+  else
+    y = a – x;
+  a += x;
+```
+
+```mermaid
+graph TD
+    a("a=10") --> d{"x>0 AND y<5"}
+```
+
+
+
 # Literatura
  - Ron Patton, Testowanie oprogramowania, MIKOM, 2002
  - Glenford J. Myers, et al, Sztuka testowania oprogramowania, Helion, 2005
