@@ -522,6 +522,49 @@ graph TD
     fin(("-"))
 ```
 
+Jakie jest pokrycie rozgałęzień dla testów: TC1: {x = 1, y = 0} i TC2: {x = 5, y = 10}?
+
+Odpowiedź: Testy TC1 i TC2 pozwolą uzyskać 4/5 = 80% pokrycia rozgałęzień (100% pokrycia instrukcji)
+
+Jakie dane testowe pozwolą uzyskać 100% pokrycia rozgałęzień?
+
+##### Pokrycie ścieżek
+Test pokrycia ścieżek polega na takim doborze danych testowych, aby w miarę możliwości wykonać wszystkie ścieżki w grafie przepływu sterowania od węzła początkowego do określonego węzła końcowego. Ograniczenia badania pokrycia ścieżek: 
+ - liczba ścieżek rośnie wykładniczo wraz z liczbą decyzji w programie (rozgałęzień w grafie przepływu sterowania), a w przypadku pętli może być nawet nieskończona 
+ - z uwagi na występujące warunki logiczne możliwa jest sytuacja, wktórej nie wszystkie ścieżki będą osiągalne, co uniemożliwia uzyskanie 100% pokrycia ścieżek
+
+Uwzględniając powyższe ograniczenie, kompletny test pokrycia ścieżek zastępuje się najczęściej testowaniem odpowiednio dobranego (reprezentatywnego) podzbioru ścieżek. W przypadku testowania pętli liczbę ścieżek ogranicza się w taki sposób, aby uwzględnić następujące przypadki:
+ - żadna iteracja pętli nie zostanie wykonywana
+ - zostanie wykonane n iteracji pętli (n - parametr) w taki sposób, aby wszystkie ścieżki wewnątrz pętli zostały co najmniej raz wykonane
+ - zostanie wykonana minimalna liczba iteracji, przeciętna liczba iteracji oraz maksymalna liczba iteracji
+
+Test pokrycia ścieżek wykorzystujący podejście LCSAJ ( Linear Code Sequence And Jump ) bierze pod uwagę wszystkie ścieżki bazujące na liniowych sekwencjach kodu, które są definiowane przez trójki punktów w kodzie źródłowym, wskazujące odpowiednio: początek sekwencji instrukcji, koniec tej sekwencji oraz docelową instrukcję, do której będzie przekazane sterowanie. Stopień skomplikowania testowanego fragmentu kodu odzwierciedla tzw. złożoność cyklomatyczna CC (cyclomatic complexity) , która określa liczbę niezależnych ścieżek wprogramie jako d+1, gdzie d jest liczbą binarnych węzłów decyzyjnych.
+
+Przykład
+```
+  if (success) 
+    a = 1;
+  a++;
+  if (success)
+    a += 10
+```
+
+```mermaid
+graph TD
+    start(("-")) --> d1{"success"}
+    d1 -- No --> a2("a++")
+    d1 -- Yes --> a1("a#equals;1")
+    a1 --> a2
+    a2 --> d2
+    d2 -- No --> fin
+    d2 -- Yes --> a3("a+#equals;10")
+    fin(("-"))
+```
+
+Jakie największe pokrycie ścieżek można uzyskać dla powyższego fragmentu kodu?
+
+Odpowiedź: Niezależnie od wartości parametru „success” zawsze uzyskamy 2/4 = 50% pokrycia ścieżek.
+
 
 # Literatura
  - Ron Patton, Testowanie oprogramowania, MIKOM, 2002
