@@ -477,6 +477,13 @@ Przykład
 ```mermaid
 graph TD
     a("a#equals;10") --> d{"x#gt;0 AND y#lt;5"}
+    d -- No --> y1
+    d -- Yes --> y2
+    y1 --> fin
+    y2 --> fin
+    y1("y#equals;a-x")
+    y2("y#equals;a*x")
+    fin("a+#equals;x")
 ```
 
 
