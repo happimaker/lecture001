@@ -339,7 +339,7 @@ graph LR
     system --> wyjście
     wejście("Dane wejściowe (testowe)")
     system("Testowany system")
-    wyjście("Dane wyjściowe)
+    wyjście("Dane wyjściowe")
 ```
 
 Techniki testowania funkcjonalnego wykorzystują:
