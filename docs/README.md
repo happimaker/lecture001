@@ -2,8 +2,6 @@
 title: Testowanie oprogramowania
 ---
 
-[[_TOC_]]
-
 # Wprowadzenie do testowania
 
 ```mermaid
@@ -499,6 +497,30 @@ Odpowiedź: Testy TC1 i TC2 pozwalają na uzyskanie 100% pokrycia instrukcji
 ##### Pokrycie rozgałęzień
 
 Test pokrycia rozgałęzień polega na takim doborze danych testowych, aby wykonać co najmniej jeden raz każdą krawędź w grafie przepływu sterowania (tzn. zapewnić przejście przez wszystkie możliwe rozgałęzienia wynikające z instrukcji warunkowych, pętli oraz instrukcji wyboru). Każde rozgałęzienie w grafie sterowania traktowane jest w tym teście niezależnie od pozostałych. Wynikiem instrukcji warunkowej i instrukcji pętli są dwa rozgałęzienia, zaś instrukcji wyboru tyle rozgałęzień, ile jest możliwych opcji wyboru. Test pokrycia rozgałęzień stanowi uogólnienie testu pokrycia wyrażeń.
+
+Przykład
+```
+  a = -1;
+  if (x > 0) 
+    a = 5;
+  if (y < 9)
+    a = 0
+  else
+    a += 10
+```
+
+```mermaid
+graph TD
+    a("a#equals;-1") --> d1{"x#gt;0"}
+    d1 -- No --> d2("y#lt;9")
+    d1 -- Yes --> a2("a#equals;5")
+    a2 --> d2
+    d2 -- No --> a3("a+#equals;10")
+    d2 -- Yes --> a4("a#equals;0")
+    a3 --> fin
+    a4 --> fin
+    fin((""))
+```
 
 
 # Literatura
