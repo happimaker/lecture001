@@ -255,7 +255,136 @@ Przyczyny:
 Czy błąd, którego skutków nie można zaobserwować pozostaje błędem? Czy zawsze obserwowane zachowanie programu będzie przez wszystkich obserwatorów (programistów, testerów, użytkowników) zinterpretowane w taki samsposób (jakodziałanie prawidłowe albo błędne)?
 
 # Warunki wykrycia błędu
+ - Dobrze zaprojektowany test powinien wykrywać jak największą liczbę błędów
+ - Aby wykryć błąd konieczne jest spełnienie trzech warunków: 
+   - osiągalności miejsca błędu (reachability) – dane testowe powinny być tak dobrane, aby spowodować wykonanie instrukcji zawierającej błąd 
+   - uczulenia błędu (necessity) – dane testowe powinny być tak dobrane, aby wykonanie instrukcji zawierającej błąd, spowodowało błędne wykonanie 
+   - propagacji efektu błędu (propagation) – efekt błędu powinien zostać zaobserwowany, tzn. musi mieć wpływ na wynik działania programu
+  - Spełnienie powyższych trzech warunków często nazywane jest warunkiem detekcji błędu (ideal fault condition)
 
+Przykład:
+```
+if (x >= 0) {
+  y = x * x;  // błąd – powinno być: y = x + x;
+} else {
+  y = 0;
+}
+returny >= 8;
+```
+x < 0 → brak osiągalności błędu
+
+x = 0 lub x = 2 → brak uczulenia błędu
+
+x >= 4 → brak propagacji (obserwowalności) efektu błędu
+
+# Dokumentowanie błędnego wykonania
+Każde błędne wykonanie programu powinno zostać udokumentowane przez:
+ - podanie stanu początkowego wraz z sekwencją kroków, które doprowadziły do zaobserwowania błędnego wykonania programu
+ - określenie, czy podana sekwencja kroków jest minimalna
+ - podanie alternatywnych sekwencji kroków, dających taki sam obserwowalny skutek 
+ - określenie w miarę podobnych sekwencji kroków, które nie powodują błędnego wykonania programu
+ - opis środowiska, w którym uruchamiany był program
+ - listę obserwacji skutków błędu (np. uszkodzonych danych)
+ - opis konsekwencji błędu dla użytkownika
+
+# Metodyka testowania oprogramowania
+Elementy systematycznej metodyki procesu testowania:
+ - określenie przesłanek i wymagań dotyczących generowanych testów
+ - wybór strategii testowania
+ - projektowanie testów (opracowanie i weryfikacja specyfikacji testów)
+ - planowanie procesu testowania
+ - wzbogacanie testów poprzez inspekcję kodu
+ - wybranie (ewentualnie opracowanie) narzędzi wspomagających testowanie
+ - implementacja testów
+ - dokumentowanie testowania
+ - ocena testów, identyfikowanie pominiętych przesłanek testowania wcelu udoskonalenia testów
+
+Testowanie możemy podzielić ze względu na
+ - sposób przeprowadzania testowania
+ - zakres testowania
+ - przeznaczenie testowania
+
+## Podział testów ze względu na sposób ich przeprowadzenia
+ - manualnie – przez testera wykonującego zaplanowaną sekwencję operacji
+ - automatycznie – za pomocą odpowiednich narzędzi (testing framework), pozwalających na uruchomienie napisanych testów lub odtworzenie testów uprzednio nagranych
+
+## Podział testów ze względu na zakres testowania
+ - testy specyfikacji (specification testing) – pozwalają sprawdzić statycznie poprawność opracowanych lub dostarczonych specyfikacji (wymagań,danych, projektu)
+ - testy modułów, testy jednostkowe (unit testing) – testują one system na poziomie pojedynczych funkcji (metod) 
+ - testy integracyjne (integration testing) – pozwalają sprawdzić poprawność współpracy różnych komponentów składowych systemu
+ - testy systemowe (system testing) – dotyczą testowania aplikacji jako całości, zwłaszcza w kontekście weryfikacji specyfikacji wymagań
+ - testy akceptacyjne (acceptance testing) – służą do oceny zgodności działania programu z wymaganiami użytkownika
+
+## Podział testów ze względu na ich przeznaczenie
+ - testy funkcjonalne (functional testing) – pozwalają ocenić, czy oprogramowanie działa zgodnie ze specyfikacją
+ - testy regresyjne (regression testing) – służą do sprawdzenia, czy wprowadzone w kodzie modyfikacje bądź zmiany w środowisku, nie skutkują powstaniem nowych błędów lub ujawnieniem się błędów dotychczas niewykrytych
+ - testy przenaszalności/testy konfiguracji (portability/configuration testing) – pozwalają ocenić, czy oprogramowanie będzie działać na różnych platformach sprzętowych lub systemach operacyjnych
+ - testy post-awaryjne (disaster recovery testing) – służą ocenie zachowania aplikacji po wystąpieniu sytuacji awaryjnej
+ - testy bezpieczeństwa (safety testing) – służą ocenie bezpieczeństwa aplikacji
+
+ ## Strategie testowania
+ - Przed rozpoczęciem testowania konieczne jest przyjęcie pewnych założeń dotyczących wyboru strategii (koncepcji) testowania programu i projektowania przypadków testowych
+ - Najczęściej stosowane strategie testowania:
+   - testowanie funkcjonalne, zwane także testowaniem metodą „czarnej skrzynki” (black-box testing), testowaniem sterowanym danymi (data-driven testing) lub testowaniem wejścia-wyjścia (input/output testing)
+   - testowanie strukturalne, zwane także testowaniem metodą „białej skrzynki” (white-box testing), metodą „szklanej skrzynki” (glass-box testing) lub testowaniem sterowanym logiką (logic-driven testing)
+   - testowanie oparte na doświadczeniu (experience-based testing) 
+
+### Testowanie funkcjonalne (black-box)
+ - Podstawowym założeniem testowania funkcjonalnego jest znajomość wymagań dla testowanej funkcjonalności 
+ - System traktowany jest jak „czarna skrzynka”, o której nic nie wiemy, a testowanie polega na wprowadzeniu na jej wejście danych testowych i porównaniu otrzymanych wyników zdanymi oczekiwanymi
+
+```mermaid
+graph LR
+    wejście --> system
+    system --> wyjście
+    wejście("Dane wejściowe (testowe)")
+    system("Testowany system")
+    wyjście("Dane wyjściowe)
+```
+
+Techniki testowania funkcjonalnego wykorzystują:
+ - podział na klasy równoważności (equivalence partitioning)
+ - analizę wartości brzegowych (boundary value analysis)
+ - tablice przejść stanów (state transition testing)
+ - tablice decyzyjne (decision table testing) lub grafy przyczynowoskutkowe (cause-effect graphs)
+ - przypadki użycia (use case testing)
+ - kontrolę składni (syntax testing)
+ - kombinacje par parametrów wejściowych (pairwise testing)
+ - losowy lub pseudo-losowy dobór danych testowych (random testing) 
+
+#### Klasy równoważności
+Technika oparta na podziale na klasy równoważności zakłada podział dziedziny wartości danych wejściowych na skończoną liczbę podzbiorów (klas równoważności) w taki sposób, aby:
+ - program zachowywał się analogicznie dla wszystkich wartości danych z tej samej klasy
+ - zastąpienie testowania wszystkich wartości danych z klasy równoważności przez testowanie pojedynczej (reprezentatywnej) wartości danej z tej klasy, pozwalało na wykrycie błędu z takim samymp rawdopodobieństwem
+ 
+Przypadki testowe projektuje się tak, aby pokrywały wszystkie możliwe scenariusze
+
+Przykład:
+>>>
+„Oddział banku umożliwia podjęcie pieniędzy z rachunku klienta po okazaniu dowodu osobistego. Wypłata kwoty przekraczającej 1000 złotych wymaga weryfikacji stanu konta klienta. Kwoty wypłat przekraczające 50 000 złotych muszą zostać dodatkowo zatwierdzone przez kierownika placówki.”
+>>>
+
+Przypadki testowe: -10.00, 100.00, 1 200.00, 55 000.00
+
+#### Wartości brzegowe
+Technika oparta na analizie wartości brzegowych bada zachowanie programu dla brzegowych (granicznych) wartości danych wejściowych oraz „w pobliżu” wartości rozgraniczających klasy równoważności, wychodząc z założenia, że prawdopodobieństwo wystąpienia błędnego wykonania programu dla takich właśnie wartości jest dużo większe niż dla wartości „ze środka” klas równoważności
+
+Przypadki testowe: -0.01, 0.00, 0.01, 999.99, 1 000.00, 1 000.01, 49 999.99, 50 000.00, 50 000.01
+
+#### Tablice przejść stanów
+Technika wykorzystująca tablice przejść między stanami służy do testowania systemów wyspecyfikowanych lub modelowanych jako maszyna stanowa Przypadki testowe projektuje się tak, aby sprawdzały osiągalność poszczególnych stanów, a także dozwolone orazniedozwolone przejścia między stanami 
+
+Przykład
+
+```mermaid
+graph LR
+    s1 -- 0 --> s1
+    s2 -- 0 --> s2
+    s1 -- 1 --> s2
+    s2 -- 1 --> s1
+    s1(("S1"))
+    s2(("S2"))
+```
 
 # Literatura
  - Ron Patton, Testowanie oprogramowania, MIKOM, 2002
