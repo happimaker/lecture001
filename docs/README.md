@@ -519,7 +519,7 @@ graph TD
     d2 -- Yes --> a4("a#equals;0")
     a3 --> fin
     a4 --> fin
-    fin((""))
+    fin(("-"))
 ```
 
 
