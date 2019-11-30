@@ -1,6 +1,8 @@
 ---
 title: Testowanie oprogramowania
+{:toc}
 ---
+
 
 # Wprowadzenie do testowania
 
@@ -486,6 +488,17 @@ graph TD
     fin("a+#equals;x")
 ```
 
+Jak dobrać dane testowe (x, y), aby uzyskać jak największe pokrycie instrukcji?
+
+Test TC1: {x = 1 , y = 2} pokrywa instrukcje w liniach: 1, 2, 3 i 6
+
+Test TC2: {x = 0 , y = 0} pokrywa instrukcje w liniach: 1, 2, 4, 5 i 6
+
+Odpowiedź: Testy TC1 i TC2 pozwalają na uzyskanie 100% pokrycia instrukcji
+
+##### Pokrycie rozgałęzień
+
+Test pokrycia rozgałęzień polega na takim doborze danych testowych, aby wykonać co najmniej jeden raz każdą krawędź w grafie przepływu sterowania (tzn. zapewnić przejście przez wszystkie możliwe rozgałęzienia wynikające z instrukcji warunkowych, pętli oraz instrukcji wyboru). Każde rozgałęzienie w grafie sterowania traktowane jest w tym teście niezależnie od pozostałych. Wynikiem instrukcji warunkowej i instrukcji pętli są dwa rozgałęzienia, zaś instrukcji wyboru tyle rozgałęzień, ile jest możliwych opcji wyboru. Test pokrycia rozgałęzień stanowi uogólnienie testu pokrycia wyrażeń.
 
 
 # Literatura
