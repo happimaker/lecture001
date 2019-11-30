@@ -476,7 +476,7 @@ Przykład
 
 ```mermaid
 graph TD
-    a(a=10) --> d{"x>0 AND y<5"}
+    a('a=10') --> d{"x>0 AND y<5"}
 ```
 
 
