@@ -4,56 +4,56 @@ title: Testowanie oprogramowania
 
 <!-- TOC -->
 
-- [Wprowadzenie do testowania](#wprowadzenie-do-testowania)
-    - [Najbardziej spektakularne błędy w programach oraz ich skutki](#najbardziej-spektakularne-błędy-w-programach-oraz-ich-skutki)
-    - [Kiedy w oprogramowaniu znajduje się błąd?](#kiedy-w-oprogramowaniu-znajduje-się-błąd)
-    - [Źródła powstawania błędów, udział od największych do najmniejszych](#źródła-powstawania-błędów-udział-od-największych-do-najmniejszych)
-    - [Kontekst i zrozumienie](#kontekst-i-zrozumienie)
-    - [Źródła i rodzaje błędów](#źródła-i-rodzaje-błędów)
-    - [Szacunkowe koszty błędów](#szacunkowe-koszty-błędów)
-    - [Czy testowanie się opłaca?](#czy-testowanie-się-opłaca)
-    - [Podstawowe pojęcia](#podstawowe-pojęcia)
-    - [Podstawowe zasady](#podstawowe-zasady)
-- [Walidacja i weryfikacja oprogramowania](#walidacja-i-weryfikacja-oprogramowania)
-    - [Weryfikacja dynamiczna](#weryfikacja-dynamiczna)
-    - [Cele testowania](#cele-testowania)
-- [Model V](#model-v)
-- [Aksjomaty testowania](#aksjomaty-testowania)
-    - [Nawet najprostszego programu nie da się przetestować całkowicie (wyczerpująco)](#nawet-najprostszego-programu-nie-da-się-przetestować-całkowicie-wyczerpująco)
-    - [Testowanie oprogramowania jest ryzykowne](#testowanie-oprogramowania-jest-ryzykowne)
-    - [Im więcej błędów zostało znalezionych, tym więcej błędów pozostaje jeszcze nieznalezionych](#im-więcej-błędów-zostało-znalezionych-tym-więcej-błędów-pozostaje-jeszcze-nieznalezionych)
-    - [Nie wszystkie znalezione błędy zostaną naprawione](#nie-wszystkie-znalezione-błędy-zostaną-naprawione)
-    - [Trudno jest zawsze jednoznacznie określić, co jest, a co nie jest błędem](#trudno-jest-zawsze-jednoznacznie-określić-co-jest-a-co-nie-jest-błędem)
-- [Warunki wykrycia błędu](#warunki-wykrycia-błędu)
-- [Dokumentowanie błędnego wykonania](#dokumentowanie-błędnego-wykonania)
-- [Metodyka testowania oprogramowania](#metodyka-testowania-oprogramowania)
-    - [Podział testów](#podział-testów)
-        - [Podział testów ze względu na sposób ich przeprowadzenia](#podział-testów-ze-względu-na-sposób-ich-przeprowadzenia)
-        - [Podział testów ze względu na zakres testowania](#podział-testów-ze-względu-na-zakres-testowania)
-        - [Podział testów ze względu na ich przeznaczenie](#podział-testów-ze-względu-na-ich-przeznaczenie)
-    - [Strategie testowania](#strategie-testowania)
-        - [Testowanie funkcjonalne (black-box)](#testowanie-funkcjonalne-black-box)
-            - [Klasy równoważności](#klasy-równoważności)
-            - [Wartości brzegowe](#wartości-brzegowe)
-            - [Tablice przejść stanów](#tablice-przejść-stanów)
-            - [Tablice decyzyjne i grafy przyczynowo-skutkowe](#tablice-decyzyjne-i-grafy-przyczynowo-skutkowe)
-            - [Przypadki użycia](#przypadki-użycia)
-            - [Kontrola składni](#kontrola-składni)
-            - [Kombinacje par parametrów](#kombinacje-par-parametrów)
-            - [Losowy dobór danych](#losowy-dobór-danych)
-            - [Podsumowanie (black-box)](#podsumowanie-black-box)
-        - [Testowanie strukturalne (white-box)](#testowanie-strukturalne-white-box)
-            - [Analiza przepływu danych](#analiza-przepływu-danych)
-            - [Analiza pokrycia kodu](#analiza-pokrycia-kodu)
-                - [Pokrycie wyrażeń](#pokrycie-wyrażeń)
-                - [Pokrycie rozgałęzień](#pokrycie-rozgałęzień)
-                - [Pokrycie ścieżek](#pokrycie-ścieżek)
-                - [Pokrycie decyzji](#pokrycie-decyzji)
-                - [Pokrycie warunków logicznych](#pokrycie-warunków-logicznych)
-            - [Podsumowanie (white-box)](#podsumowanie-white-box)
-        - [Testowanie oparte na doświadczeniu](#testowanie-oparte-na-doświadczeniu)
-            - [Podsumowanie (doświadczenie)](#podsumowanie-doświadczenie)
-- [Literatura](#literatura)
+- Wprowadzenie do testowania
+    - Najbardziej spektakularne błędy w programach oraz ich skutki
+    - Kiedy w oprogramowaniu znajduje się błąd? 
+    - Źródła powstawania błędów, udział od największych do najmniejszych
+    - Kontekst i zrozumienie
+    - Źródła i rodzaje błędów
+    - Szacunkowe koszty błędów
+    - Czy testowanie się opłaca?
+    - Podstawowe pojęcia
+    - Podstawowe zasady
+- Walidacja i weryfikacja oprogramowania
+    - Weryfikacja dynamiczna
+    - Cele testowania
+- Model V
+- Aksjomaty testowania
+    - Nawet najprostszego programu nie da się przetestować całkowicie (wyczerpująco)
+    - Testowanie oprogramowania jest ryzykowne
+    - Im więcej błędów zostało znalezionych, tym więcej błędów pozostaje jeszcze nieznalezionych
+    - Nie wszystkie znalezione błędy zostaną naprawione
+    - Trudno jest zawsze jednoznacznie określić, co jest, a co nie jest błędem
+- Warunki wykrycia błędu
+- Dokumentowanie błędnego wykonania
+- Metodyka testowania oprogramowania
+    - Podział testów
+        - Podział testów ze względu na sposób ich przeprowadzenia
+        - Podział testów ze względu na zakres testowania
+        - Podział testów ze względu na ich przeznaczenie
+    - Strategie testowania
+        - Testowanie funkcjonalne (black-box)
+            - Klasy równoważności
+            - Wartości brzegowe
+            - Tablice przejść stanów
+            - Tablice decyzyjne i grafy przyczynowo-skutkowe
+            - Przypadki użycia
+            - Kontrola składni
+            - Kombinacje par parametrów
+            - Losowy dobór danych
+            - Podsumowanie (black-box)
+        - Testowanie strukturalne (white-box)
+            - Analiza przepływu danych
+            - Analiza pokrycia kodu
+                - Pokrycie wyrażeń
+                - Pokrycie rozgałęzień
+                - Pokrycie ścieżek
+                - Pokrycie decyzji
+                - Pokrycie warunków logicznych
+            - Podsumowanie (white-box)
+        - Testowanie oparte na doświadczeniu
+            - Podsumowanie (doświadczenie) 
+- Literatura
 
 <!-- /TOC -->
 
