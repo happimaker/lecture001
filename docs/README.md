@@ -1,8 +1,8 @@
 ---
 title: Testowanie oprogramowania
-{:toc}
 ---
 
+[[_TOC_]]
 
 # Wprowadzenie do testowania
 
