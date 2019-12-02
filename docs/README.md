@@ -53,6 +53,16 @@ title: Testowanie oprogramowania
             - Podsumowanie (white-box)
         - Testowanie oparte na doświadczeniu
             - Podsumowanie (doświadczenie) 
+- Testowanie jednostkowe
+    - Cechy testowania jednostkowego
+- Testowanie mutacyjne/różnicowe
+- Testowanie integracyjne
+    - Metoda zstępująca (top-down)
+    - Metoda wstępująca (bottom-up)
+    - Podsumowanie (testowanie integracyjne)
+- Testowanie systemowe
+- Testy akceptacyjne
+- Niezawodność oprogramowania
 - Literatura
 
 <!-- /TOC -->
@@ -787,11 +797,11 @@ W trakcie planowania testowania należy jasno sprecyzować, jakie kryteria musz�
  - testowanie systemowe
  - testowanie akceptacyjne
 
-# Testowanie jednostkowe
+# 8. Testowanie jednostkowe
 Testowanie jednostkowe (testowanie modułów) jest metodą testowania strukturalnego, której celem jest sprawdzenie poprawności działania pojedynczych i nietrywialnych jednostek kodu (elementów składowych oprogramowania), takich jak funkcje, procedury, klasy, metody (zwłaszcza publiczne) lub zbiory współpracujących ze sobą klas.
 Testowana jednostka kodu jest zazwyczaj wykonywana w środowisku, w którym wytwarzane jest oprogramowanie, a jej zaobserwowane zachowanie (zwracany wynik, stan obiektu, generowane komunikaty, rzucony wyjątek) jest porównywane z zachowaniem oczekiwanym.
 
-## Cechy testowania jednostkowego
+## 8.1. Cechy testowania jednostkowego
  - testowanie jednostek kodu (względnie małych fragmentów kodu) jest na ogół łatwiejsze i efektywniejsze od testowania całego programu
  - testowanie poszczególnych jednostek nie wymaga uruchamiania całego programu, a jedynie jego niezbędnej do testowania
 i wyizolowanej z całości części kodu
@@ -815,13 +825,13 @@ Zbiór przypadków testowych, który dotyczy jednej jednostki kodu grupuje się 
 W przypadku testowania obiektów, które są bardzo silnie ze sobą powiązane, działają powolnie lub niedeterministycznie, są trudne do skonfigurowania, związane z interfejsem użytkownika lub po prostu jeszcze nie istnieją, prawidłowe przeprowadzenie testowania jednostkowego może być znacząco utrudnione.
 W takich przypadkach rzeczywiste obiekty są na czas uruchamiania i testowania kodu zastępowane przez obiekty „imitacji” (mockobjects), posiadające takie same interfejsy jak obiekty rzeczywiste i dostarczające testowanym obiektom wcześniej przygotowane do testów dane.
 
-# Testowanie mutacyjne/różnicowe
+# 9. Testowanie mutacyjne/różnicowe
 Testowanie różnicowe jest metodą określania efektywności testu tj. skuteczności w znajdywaniu błędów w kodzie.
 Ideą tego podejścia jest tworzenie odmian (mutantów) testowanego kodu poprzez dokonywanie w nim niewielkich modyfikacji.
 Różne mutanty kodu podlegają następnie testowaniu, a wszelkie zauważone rozbieżności w wynikach testowania są rejestrowane i analizowane.
 Dobrze zaprojektowany test powinien „zauważyć” zmianę w zachowaniu programu, wynikającą z wprowadzonej modyfikacji w kodzie.
 
-# Testowanie integracyjne
+# 10. Testowanie integracyjne
 Celem testowania integracyjnego jest sprawdzenie współpracy pomiędzy modułami (jednostkami, komponentami) oprogramowania, łączonymi w większe podzespoły.
 Testy integracyjne są wykonywane przez programistów odpowiedzialnych za proces scalania modułów, odbywają się w środowisku, w którym wytwarzane jest oprogramowanie i służą głównie wykrywaniu błędów w interfejsach oraz interakcjach pomiędzy łączonymi modułami i systemami.
 Proces scalania i testowania poszczególnych modułów jest wielokrotnie powtarzany, aż do zbudowania kompletnego programu
@@ -838,7 +848,7 @@ W podejściu przyrostowym moduły lub systemy są scalane i testowane stopniowo,
 W podejściu skokowym testowanie modułów następuje dopiero po ich scaleniu w duże podzespoły lub w kompletny program.
 Podstawową wadą podejścia skokowego jest to, że błędy zostają wykryte w bardzo późnej fazie procesu testowania, co utrudnia ich zlokalizowanie oraz zwiększa koszty i podnosi ryzyko projektu
 
-## Metoda zstępująca (top-down)
+## 10.1. Metoda zstępująca (top-down)
 Podczas testowania metodą zstępującą najpierw scala i testuje się moduły programu będące na szczycie hierarchii, zastępując moduły na niższych poziomach hierarchii ich namiastkami (stubs), tj. modułami o takich samych interfejsach, lecz o ograniczonej funkcjonalności.
 Przetestowane moduły są następnie używane do testowania modułów znajdujących się na niższym poziomie hierarchii, przy czym kolejność testowania modułów na tym samym poziomie hierarchii jest dowolna.
 Ten proces jest powtarzany, aż do przetestowania modułów znajdujących się na najniższym poziomie hierarchii, co kończy proces testowania całego programu.
@@ -859,7 +869,7 @@ graph TD
 
 W celu przetestowania modułu z poziomu 1, wszystkie moduły z poziomu 2 zostają zastąpione namiastkami. Analogicznie, do przetestowania modułów z poziomu 2, moduły z poziomu 3 zostają zastąpione swoimi namiastkami.
 
-## Metoda wstępująca (bottom-up)
+## 10.2. Metoda wstępująca (bottom-up)
 Podczas testowania metodą wstępującą najpierw scala i testuje się moduły na najniższym poziomie hierarchii, wykorzystując moduły-sterowniki (drivers) testowania do symulowania ich wywołań przez moduły położone wyżej w hierarchii.
 Przetestowane moduły są następnie używane do testowania modułów znajdujących się na wyższym poziomie hierarchii, przy czym kolejność testowania modułów na tym samym poziomie hierarchii jest dowolna.
 Proces testowania całego programu uznaje się za zakończony po przetestowania modułów znajdujących się na najwyższym poziomie hierarchii.
@@ -880,13 +890,13 @@ graph TD
 
 Aby przetestować moduły z poziomu 3, a później z poziomu 2, trzeba je „podłączyć” do odpowiednich sterowników testowania.
 
-## Podsumowanie (testowanie integracyjne)
+## 10.3. Podsumowanie (testowanie integracyjne)
  - projektowanie i implementowanie modułów-sterowników jest prostsze od namiastek (sterowniki przekazują dane testowe i rejestrują wyniki, namiastki muszą natomiast symulować działanie rzeczywistych modułów, od działania których zależą wyniki testowania)
  - wadą testowania wstępującego jest niemożność skonstruowania wersji „szkieletowej” programu (brak głównego modułu sterującego)
  - wadą testowania zstępującego jest duża trudność projektowania przypadków testowych, które muszą uwzględniać wszystkie możliwe sytuacje (zmieniające się moduły pośredniczące)
  - zaletą testowania wstępującego jest to, że można do niego przystąpić już w bardzo wczesnej fazie tworzenia programu (nie jest konieczne ukończenie projektu architektonicznego)
 
-# Testowanie systemowe
+# 11. Testowanie systemowe
 Testowanie systemowe jest kolejnym poziomem testowania, w którym sprawdza się, czy funkcjonalność i jakość w pełni zintegrowanego programu jest zgodna z oczekiwaniami.
 Testy systemowe przeprowadza się najczęściej w oparciu o specyfikację wymagań dla programu (uwzględniającą zarówno wymagania funkcjonalne, jak i niefunkcjonalne) lub różne wysoko-poziomowe modele opisujące jego funkcjonowanie (scenariusze użycia, procesy biznesowe, modele transakcji).
 Testy systemowe są przeprowadzane przez programistów lub niezależny zespół testowy, najlepiej w środowisku maksymalnie zbliżonym do docelowego.
@@ -901,14 +911,14 @@ Przegląd wybranych testów systemowych sprawdzających różne aspekty funkcjon
  - Testy dostępności służą do oceny w jakim stopniu zastosowane rozwiązania pozwolą na użytkowanie programu przez osoby
 z dysfunkcjami (niewidome, niedowidzące, z zaburzoną motoryką)
 
-# Testy akceptacyjne
+# 12. Testy akceptacyjne
 Testowanie akceptacyjne jest finalnym etapem testowania zaimplementowanego programu, mającym na celu sprawdzenie, czy spełnia on wyspecyfikowane oczekiwania użytkownika i realizuje założone procesy biznesowe.
 Testy akceptacyjne przeprowadzane są przez użytkowników systemu lub ich reprezentantów przy współudziale przedstawicieli producenta, w docelowym środowisku pracy (z uwzględnieniem sprzętu i systemu operacyjnego).
 Testy akceptacyjne pozwalają formalnie ocenić jakość stworzonego oprogramowania, a także zweryfikować niejawne założenia i oczekiwania, poczynione zarówno przez klienta, jak i zespół producenta oprogramowania.
 Testy alfa są wewnętrznymi testami akceptacyjnymi, które są przeprowadzane przez potencjalnych użytkowników lub niezależny zespół testowy i odbywają się u producenta, ale bez udziału wytwórcy oprogramowania.
 Testy beta są zewnętrznymi testami akceptacyjnymi, które są przeprowadzane przez większe grupy użytkowników i odbywają się poza miejscem wytwarzania oprogramowania Testowanie beta jest podejściem często wykorzystywanym po to, aby uzyskać zwrotną informację z rynku dla tzw. oprogramowania „z półki”.
 
-# Niezawodność oprogramowania
+# 13. Niezawodność oprogramowania
 Niezawodność, obok takich cech jak: funkcjonalność, użyteczność, wydajność i wiele innych, jest elementem istotnie wpływającym na jakość oprogramowania.
 Niezawodność oprogramowania (wyrażana w sposób jakościowy lub ilościowy, jako wartość pewnej miary) jest często kryterium pojawiającym się w wymaganiach klienta.
 Określenie poziomu niezawodności pozwala:
@@ -929,7 +939,7 @@ niezawodność = niezawodność_początkowa * exp(-C * liczba_testów)
 gdzie stałą C należy oszacować dla każdego systemu na podstawie obserwacji statystycznych jego niezawodności.
 Szybszy wzrost niezawodności systemu można osiągnąć poprzez odpowiedni (nielosowy) dobór danych testowych.
 
-# 8. Literatura
+# 14. Literatura
  - Ron Patton, Testowanie oprogramowania, MIKOM, 2002
  - Glenford J. Myers, et al, Sztuka testowania oprogramowania, Helion, 2005
  - Dick Hamlet, Joe Maybee, Podstawy techniczne inżynierii oprogramowania, WNT, 2003
