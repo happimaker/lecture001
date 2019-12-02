@@ -845,14 +845,14 @@ Ten proces jest powtarzany, aż do przetestowania modułów znajdujących się n
 
 ```mermaid
 graph TD
-    module1.1 -- module2.1
-    module1.1 -- module2.2
-    module1.1 -- module2.3
-    module2.1 -- module3.1
-    module2.1 -- module3.2
-    module2.1 -- module3.3
-    module2.3 -- module3.4
-    module2.3 -- module3.5
+    module1.1 --- module2.1
+    module1.1 --- module2.2
+    module1.1 --- module2.3
+    module2.1 --- module3.1
+    module2.1 --- module3.2
+    module2.1 --- module3.3
+    module2.3 --- module3.4
+    module2.3 --- module3.5
 ```
 
 
