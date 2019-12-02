@@ -55,13 +55,18 @@ title: Testowanie oprogramowania
             - Podsumowanie (doświadczenie) 
 - Testowanie jednostkowe
     - Cechy testowania jednostkowego
-- Testowanie mutacyjne/różnicowe
+- Testowanie mutacyjne/różnicowe i jakość testów
 - Testowanie integracyjne
     - Metoda zstępująca (top-down)
     - Metoda wstępująca (bottom-up)
     - Podsumowanie (testowanie integracyjne)
 - Testowanie systemowe
 - Testy akceptacyjne
+- Test-Driven Development
+    - Cykl TDD
+    - Refaktoryzacja
+    - Konsekwencje
+- Obiekty zastępcze
 - Niezawodność oprogramowania
 - Literatura
 
@@ -825,11 +830,34 @@ Zbiór przypadków testowych, który dotyczy jednej jednostki kodu grupuje się 
 W przypadku testowania obiektów, które są bardzo silnie ze sobą powiązane, działają powolnie lub niedeterministycznie, są trudne do skonfigurowania, związane z interfejsem użytkownika lub po prostu jeszcze nie istnieją, prawidłowe przeprowadzenie testowania jednostkowego może być znacząco utrudnione.
 W takich przypadkach rzeczywiste obiekty są na czas uruchamiania i testowania kodu zastępowane przez obiekty „imitacji” (mockobjects), posiadające takie same interfejsy jak obiekty rzeczywiste i dostarczające testowanym obiektom wcześniej przygotowane do testów dane.
 
-# 9. Testowanie mutacyjne/różnicowe
+# 9. Testowanie mutacyjne/różnicowe i jakość testów
+ - Jakość kodu:
+   - Czy program robi to co powinien?
+   - Czy kod jest dobrze napisany?
+ - Jakość testu:
+   - Czy test testuje to, do czego został przeznaczony?
+   - Czy test testuje dobrze i efektywnie?
+   - Czy kod testu jest dobrze napisany?
+ - Jakość zbioru testów:
+   - Jaki zakres kodu testuje zbiór testów?
+
 Testowanie różnicowe jest metodą określania efektywności testu tj. skuteczności w znajdywaniu błędów w kodzie.
 Ideą tego podejścia jest tworzenie odmian (mutantów) testowanego kodu poprzez dokonywanie w nim niewielkich modyfikacji.
 Różne mutanty kodu podlegają następnie testowaniu, a wszelkie zauważone rozbieżności w wynikach testowania są rejestrowane i analizowane.
 Dobrze zaprojektowany test powinien „zauważyć” zmianę w zachowaniu programu, wynikającą z wprowadzonej modyfikacji w kodzie.
+
+Operatory mutacji:
+ - Relacyjne, np.: z > na >=
+ - Negacje, np.: z == na !=
+ - Usuwanie warunków, np.: z if (a==b) {} na if (true) {}
+ - Matematyczne, np.: z + na –
+ - Inkrementacyjne, np.: z ++ na -
+ - Zamiana znaku, np..: +1 na -1 
+ - Zamiana wartości stałej, 
+ - Zamiana wartości zwracanej z metody,
+ - Usuwanie wywołań funkcji i procedur,
+ - Usuwanie wywołań konstruktorów,
+ - …
 
 # 10. Testowanie integracyjne
 Celem testowania integracyjnego jest sprawdzenie współpracy pomiędzy modułami (jednostkami, komponentami) oprogramowania, łączonymi w większe podzespoły.
@@ -918,7 +946,56 @@ Testy akceptacyjne pozwalają formalnie ocenić jakość stworzonego oprogramowa
 Testy alfa są wewnętrznymi testami akceptacyjnymi, które są przeprowadzane przez potencjalnych użytkowników lub niezależny zespół testowy i odbywają się u producenta, ale bez udziału wytwórcy oprogramowania.
 Testy beta są zewnętrznymi testami akceptacyjnymi, które są przeprowadzane przez większe grupy użytkowników i odbywają się poza miejscem wytwarzania oprogramowania Testowanie beta jest podejściem często wykorzystywanym po to, aby uzyskać zwrotną informację z rynku dla tzw. oprogramowania „z półki”.
 
-# 13. Niezawodność oprogramowania
+# 13. Test-Driven Development
+ - TDD = Test-driven development,
+ - Proces tworzenia oprogramowania sterowany testami,
+ - Jednostkowe testy automatyczne,
+ - Testy są tworzone przed napisaniem właściwego kodu,
+ - Automatyczne testy są nieodłącznym elementem projektu,
+ - Poprawne wykonanie zbioru testów zapewnia właściwe zachowanie systemu, wraz z ewolucją systemu.
+
+## 13.1. Cykl TDD
+ - Dodaj test,
+ - Uruchom testy i sprawdź, czy nowy test nie przechodzi,
+ - Napisz fragment właściwego kodu, który spełnia test,
+ - Uruchom testy i sprawdź, czy wszystkie testy przechodzą,
+ - Refaktoryzuj,
+ - Powtórz.
+
+ - Nowo dodany test nie może przejść,
+ - Jeśli test przechodzi:
+   - Nowo implementowana funkcja już jest w systemie,
+   - Test jest źle napisany i np. zawsze przechodzi, nie testując istotnych elementów,
+ - Pierwsza implementacja dodawanej funkcji powinna po prostu spełniać test,
+ - Gwarantuje to, że stworzony kawałek kodu spełnia założone wymagania,
+ - Stworzony kod nie musi być idealny, z uwagi na to, że kolejne kroki są przeznaczone do jego poprawy,
+ - Jest to dobry punkt startowy do refaktoryzacji.
+
+## 13.2. Refaktoryzacja
+ - Stworzony kod powinien zostać uporządkowany,
+ - Gotowy i działający zestaw testów zapewnia, że refaktoryzacja nie zepsuła oprogramowania,
+ - Jest to idealny moment na usunięcie duplikacji.
+
+## 13.3. Konsekwencje
+ - Metoda małych kroków, 
+ - Małe, zarządzalne, testowalne jednostki kodu,
+ - Odpowiedni poziom testowania.
+
+# 14. Obiekty zastępcze
+Przesłanki:
+ - Klasa testowana istnieje w pewnym kontekście,
+ - Klasa testowana posiada zależności, bez których nie może istnieć lub nie może poprawnie funkcjonować, 
+ - Testując klasę, testujemy też jej zależności,
+ - Pewne zależności mogą spowodować długie uruchamianie testów – np. wykorzystanie serwera aplikacji, połączenia z bazą danych,
+ - Pewne zależności mogą nie być dostępne na wczesnych etapach projektu (np. projektowana baza danych).
+
+ Koncepcja obiektów zastępczych:
+ - Rzeczywista zależność jest spełniana obiektem zastępczym (mock object),
+ - Obiekt zastępczy posiada interfejs obiektu zastępowanego i w najprostszej postaci zwraca z góry ustalone wartości,
+ - Obiekt zastępczy może być konfigurowalny,
+ - Obiekt zastępczy może rejestrować interakcje z obiektem testowanym.
+
+# 15. Niezawodność oprogramowania
 Niezawodność, obok takich cech jak: funkcjonalność, użyteczność, wydajność i wiele innych, jest elementem istotnie wpływającym na jakość oprogramowania.
 Niezawodność oprogramowania (wyrażana w sposób jakościowy lub ilościowy, jako wartość pewnej miary) jest często kryterium pojawiającym się w wymaganiach klienta.
 Określenie poziomu niezawodności pozwala:
@@ -939,7 +1016,7 @@ niezawodność = niezawodność_początkowa * exp(-C * liczba_testów)
 gdzie stałą C należy oszacować dla każdego systemu na podstawie obserwacji statystycznych jego niezawodności.
 Szybszy wzrost niezawodności systemu można osiągnąć poprzez odpowiedni (nielosowy) dobór danych testowych.
 
-# 14. Literatura
+# 16. Literatura
  - Ron Patton, Testowanie oprogramowania, MIKOM, 2002
  - Glenford J. Myers, et al, Sztuka testowania oprogramowania, Helion, 2005
  - Dick Hamlet, Joe Maybee, Podstawy techniczne inżynierii oprogramowania, WNT, 2003
