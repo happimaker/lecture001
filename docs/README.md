@@ -740,6 +740,121 @@ Zarówno podczas inspekcji kodu jak i w trakcie kontroli koleżeńskich wykorzys
  - tego typu testowanie jest przeważnie użyteczne wtedy, gdy brakuje czasu na zaprojektowanie i wdrożenie procedur testowych lub kiedy program jest słabo udokumentowany
  - testy wykorzystujące doświadczenie testera bardzo często stanowią istotne uzupełnienie testów strukturalnych i funkcjonalnych, eliminując niektóre z ich słabości
 
+ # Planowanie i dokumentowanie testowania
+Podstawowym standardem dotyczącym dokumentowania testowania oprogramowania jest IEEE 829, który specyfikuje formę dokumentów produkowanych i wykorzystywanych w różnych fazach testowania.
+Dokumenty związane z przebiegiem testowania:
+ - plan testów (test plan)
+ - specyfikacja warunków testowania (test design specification)
+ - specyfikacja przypadków testowych (test case specification)
+ - specyfikacja procedur testowych (test procedure specification)
+ - raporty i dzienniki dotyczące użycia przypadków testowych (test item transmittal report, test log)
+ - raporty wyników testowania (test incident report ,test summary report)
+
+Plan testów jest jedno- lub wielopoziomowym dokumentem opisującym planowanie procesu testowania.
+Plan testów zawiera m.in. następujące informacje:
+ - lista członków zespołu testującego
+ - przedmiot i zakres testowania
+ - znane ograniczenia procesu testowania
+ - strategie/metody testowania
+ - opis środowiska testowego/zasobów niezbędnych do testowania 􏰃 lista zadań testowych
+ - harmonogram czynności testowych
+ - monitorowanie i nadzór nad przebiegiem testowania
+ - kryterium zakończenia testów
+
+Specyfikacja warunków testowania jest dokumentem opisującym w sposób szczegółowy czynniki lub zdarzenia, które mogą być weryfikowane (pokrywane) przez jeden lub więcej przypadków testowych, identyfikującym powiązane ze sobą przypadki testowe wysokiego poziomu oraz definiującym kryteria przejścia testów.
+Specyfikacja przypadków testowych jest dokumentem zawierającym zbiór wszystkich przypadków testowych, zaprojektowanych z uwzględnieniem specyfikacji warunków testowania i ułożonych w porządku ułatwiającym ich wykonanie, zgodnie z przyjętą procedurą testową.
+
+Każdy zaprojektowany przypadek testowy powinien zostać udokumentowany przez podanie:
+ - unikalnej nazwy (id)
+ - autora
+ - opisu zastosowania
+ - warunków początkowych, jakie powinny zostać spełnione przed rozpoczęciem testowania
+ - warunków początkowych i końcowych innych obiektów wchodzących w skład IUT
+ - danych wejściowych / czynności (lub sekwencji czynności) do wykonania
+ - oczekiwanego wyniku końcowego (zwracane wartości, rzucane wyjątki, generowane komunikaty, stan wyjściowy IUT)
+
+Specyfikacja procedur testowych jest dokumentem opisującym sposób przeprowadzania każdego testu, w tym: założenia testu oraz sekwencje kroków testowania.
+W przypadku automatycznego wykonywania testu, sekwencje podejmowanych akcji zostają opisane w skrypcie testowym, który jest zautomatyzowaną procedurą testową.
+Procedury testowe mogą mieć przydzielone priorytety, które decydują o kolejności przeprowadzania testów Wykonywanie w pierwszej kolejności najważniejszych procedur testowych zwykle pozwala na osiągnięcie przyjętych celów testowania w najbardziej efektywny sposób.
+
+Raporty i dzienniki dotyczące użycia przypadków testowych opisują elementy testowe (ich konfiguracje, status i inne informacje przekazywane na początku fazy testowania od programistów) oraz chronologiczny zapis szczegółów związanych z wykonanymi testami.
+Raporty wyników testowania zawierają listę zgłoszonych błędów, ocenę testowanych elementów pod względem zgodności z przyjętymi kryteriami, różne statystyki podsumowujące aktywności testowe i osiągnięte wyniki testowania, ocenę postępu procesu testowego w stosunku do założeń z planu testów, wyciągnięte wnioski dotyczące oceny ryzyka projektu oraz zalecenia dla kadry menadżerskiej.
+
+Na etapie ustalania strategii testowania zakłada się najczęściej podział procesu testowania na kilka odrębnych faz, zależnych od zastosowanego modelu wytwarzania oprogramowania.
+W trakcie planowania testowania należy jasno sprecyzować, jakie kryteria muszą być spełnione, żeby zakończyć jedną fazę testowania i przejść do kolejnej fazy. Typowe fazy (poziomy) testowania oprogramowania:
+ - testowanie jednostkowe
+ - testowanie integracyjne
+ - testowanie systemowe
+ - testowanie akceptacyjne
+
+# Testowanie jednostkowe
+Testowanie jednostkowe (testowanie modułów) jest metodą testowania strukturalnego, której celem jest sprawdzenie poprawności działania pojedynczych i nietrywialnych jednostek kodu (elementów składowych oprogramowania), takich jak funkcje, procedury, klasy, metody (zwłaszcza publiczne) lub zbiory współpracujących ze sobą klas.
+Testowana jednostka kodu jest zazwyczaj wykonywana w środowisku, w którym wytwarzane jest oprogramowanie, a jej zaobserwowane zachowanie (zwracany wynik, stan obiektu, generowane komunikaty, rzucony wyjątek) jest porównywane z zachowaniem oczekiwanym.
+
+## Cechy testowania jednostkowego
+ - testowanie jednostek kodu (względnie małych fragmentów kodu) jest na ogół łatwiejsze i efektywniejsze od testowania całego programu
+ - testowanie poszczególnych jednostek nie wymaga uruchamiania całego programu, a jedynie jego niezbędnej do testowania
+i wyizolowanej z całości części kodu
+ - testowanie jednostkowe można łatwo zrównoleglić
+ - testowanie jednostkowe bardzo łatwo zautomatyzować
+ - testowanie jednostkowe może dotyczyć:
+   - wyłącznie metod publicznych
+   - wszystkich metod o nietrywialnym zachowaniu
+ - testowanie jednostkowe nie jest równoważne testowaniu kompletnego, modularnego programu
+
+Dobrze zaprojektowane testy jednostkowe powinny być:
+ - niezależne – jeden test nie może mieć wpływu na pozostałe testy
+ - powtarzalne – wielokrotne wykonanie testu dla danego zestawu danych powinno dawać taki sam wynik
+ - jednoznaczne – testy powinny dawać jasną odpowiedź dotyczącą testowanej funkcjonalności
+ - jednostkowe – testujące jedną funkcjonalność na raz
+ - kompletne – testujące wszystko co może zawieść
+ - hermetyczne – nieodwołujące się do zewnętrznych zasobów
+ 
+Zbiór przypadków testowych, który dotyczy jednej jednostki kodu grupuje się zazwyczaj wewnątrz jednej dedykowanej klasy, zwanej klasą testującą.
+
+W przypadku testowania obiektów, które są bardzo silnie ze sobą powiązane, działają powolnie lub niedeterministycznie, są trudne do skonfigurowania, związane z interfejsem użytkownika lub po prostu jeszcze nie istnieją, prawidłowe przeprowadzenie testowania jednostkowego może być znacząco utrudnione.
+W takich przypadkach rzeczywiste obiekty są na czas uruchamiania i testowania kodu zastępowane przez obiekty „imitacji” (mockobjects), posiadające takie same interfejsy jak obiekty rzeczywiste i dostarczające testowanym obiektom wcześniej przygotowane do testów dane.
+
+# Testowanie mutacyjne/różnicowe
+Testowanie różnicowe jest metodą określania efektywności testu tj. skuteczności w znajdywaniu błędów w kodzie.
+Ideą tego podejścia jest tworzenie odmian (mutantów) testowanego kodu poprzez dokonywanie w nim niewielkich modyfikacji.
+Różne mutanty kodu podlegają następnie testowaniu, a wszelkie zauważone rozbieżności w wynikach testowania są rejestrowane i analizowane.
+Dobrze zaprojektowany test powinien „zauważyć” zmianę w zachowaniu programu, wynikającą z wprowadzonej modyfikacji w kodzie.
+
+# Testowanie integracyjne
+Celem testowania integracyjnego jest sprawdzenie współpracy pomiędzy modułami (jednostkami, komponentami) oprogramowania, łączonymi w większe podzespoły.
+Testy integracyjne są wykonywane przez programistów odpowiedzialnych za proces scalania modułów, odbywają się w środowisku, w którym wytwarzane jest oprogramowanie i służą głównie wykrywaniu błędów w interfejsach oraz interakcjach pomiędzy łączonymi modułami i systemami.
+Proces scalania i testowania poszczególnych modułów jest wielokrotnie powtarzany, aż do zbudowania kompletnego programu
+
+Testy integracyjne opracowuje się na podstawie specyfikacji programu, najczęściej jeszcze przed fazą kodowania.
+Testowanie integracyjne należy rozpocząć natychmiast po powstaniu zdatnych do użycia modułów programu, zaś sposób jego przeprowadzania zależy od przyjętej strategii scalania modułów
+Strategie testów integracyjnych:
+ - przyrostowa
+ - zstępująca (top-down)
+ - wstępująca (bottom-up)
+ - skokowa (big bang)
+
+W podejściu przyrostowym moduły lub systemy są scalane i testowane stopniowo, jeden po drugim (lub po kilka na raz), dopóki wszystkie komponenty programu nie zostaną ze sobą zintegrowane i przetestowane.
+W podejściu skokowym testowanie modułów następuje dopiero po ich scaleniu w duże podzespoły lub w kompletny program.
+Podstawową wadą podejścia skokowego jest to, że błędy zostają wykryte w bardzo późnej fazie procesu testowania, co utrudnia ich zlokalizowanie oraz zwiększa koszty i podnosi ryzyko projektu
+
+## Metoda zstępująca (top-down)
+Podczas testowania metodą zstępującą najpierw scala i testuje się moduły programu będące na szczycie hierarchii, zastępując moduły na niższych poziomach hierarchii ich namiastkami (stubs), tj. modułami o takich samych interfejsach, lecz o ograniczonej funkcjonalności.
+Przetestowane moduły są następnie używane do testowania modułów znajdujących się na niższym poziomie hierarchii, przy czym kolejność testowania modułów na tym samym poziomie hierarchii jest dowolna.
+Ten proces jest powtarzany, aż do przetestowania modułów znajdujących się na najniższym poziomie hierarchii, co kończy proces testowania całego programu.
+
+```mermaid
+graph TD
+    module1.1 -- module2.1
+    module1.1 -- module2.2
+    module1.1 -- module2.3
+    module2.1 -- module3.1
+    module2.1 -- module3.2
+    module2.1 -- module3.3
+    module2.3 -- module3.4
+    module2.3 -- module3.5
+```
+
 
 # 8. Literatura
  - Ron Patton, Testowanie oprogramowania, MIKOM, 2002
