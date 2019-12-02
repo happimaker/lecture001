@@ -843,6 +843,8 @@ Podczas testowania metodą zstępującą najpierw scala i testuje się moduły p
 Przetestowane moduły są następnie używane do testowania modułów znajdujących się na niższym poziomie hierarchii, przy czym kolejność testowania modułów na tym samym poziomie hierarchii jest dowolna.
 Ten proces jest powtarzany, aż do przetestowania modułów znajdujących się na najniższym poziomie hierarchii, co kończy proces testowania całego programu.
 
+Hierarchia przepływu sterowania (w nawiasach kolejność testowania):
+
 ```mermaid
 graph TD
     module1.1["(1) Moduł1.1"] --- module2.1["(2) Moduł2.1"]
@@ -855,6 +857,77 @@ graph TD
     module2.3 --- module3.5["(9) Moduł3.5"]
 ```
 
+W celu przetestowania modułu z poziomu 1, wszystkie moduły z poziomu 2 zostają zastąpione namiastkami. Analogicznie, do przetestowania modułów z poziomu 2, moduły z poziomu 3 zostają zastąpione swoimi namiastkami.
+
+## Metoda wstępująca (bottom-up)
+Podczas testowania metodą wstępującą najpierw scala i testuje się moduły na najniższym poziomie hierarchii, wykorzystując moduły-sterowniki (drivers) testowania do symulowania ich wywołań przez moduły położone wyżej w hierarchii.
+Przetestowane moduły są następnie używane do testowania modułów znajdujących się na wyższym poziomie hierarchii, przy czym kolejność testowania modułów na tym samym poziomie hierarchii jest dowolna.
+Proces testowania całego programu uznaje się za zakończony po przetestowania modułów znajdujących się na najwyższym poziomie hierarchii.
+
+Hierarchia przepływu sterowania (w nawiasach kolejność testowania):
+
+```mermaid
+graph TD
+    module1.1["(1) Moduł1.1"] --- module2.1["(6) Moduł2.1"]
+    module1.1 --- module2.2["(7) Moduł2.2"]
+    module1.1 --- module2.3["(8) Moduł2.3"]
+    module2.1 --- module3.1["(1) Moduł3.1"]
+    module2.1 --- module3.2["(2) Moduł3.2"]
+    module2.1 --- module3.3["(3) Moduł3.3"]
+    module2.3 --- module3.4["(4) Moduł3.4"]
+    module2.3 --- module3.5["(5) Moduł3.5"]
+```
+
+Aby przetestować moduły z poziomu 3, a później z poziomu 2, trzeba je „podłączyć” do odpowiednich sterowników testowania.
+
+## Podsumowanie (testowanie integracyjne)
+ - projektowanie i implementowanie modułów-sterowników jest prostsze od namiastek (sterowniki przekazują dane testowe i rejestrują wyniki, namiastki muszą natomiast symulować działanie rzeczywistych modułów, od działania których zależą wyniki testowania)
+ - wadą testowania wstępującego jest niemożność skonstruowania wersji „szkieletowej” programu (brak głównego modułu sterującego)
+ - wadą testowania zstępującego jest duża trudność projektowania przypadków testowych, które muszą uwzględniać wszystkie możliwe sytuacje (zmieniające się moduły pośredniczące)
+ - zaletą testowania wstępującego jest to, że można do niego przystąpić już w bardzo wczesnej fazie tworzenia programu (nie jest konieczne ukończenie projektu architektonicznego)
+
+# Testowanie systemowe
+Testowanie systemowe jest kolejnym poziomem testowania, w którym sprawdza się, czy funkcjonalność i jakość w pełni zintegrowanego programu jest zgodna z oczekiwaniami.
+Testy systemowe przeprowadza się najczęściej w oparciu o specyfikację wymagań dla programu (uwzględniającą zarówno wymagania funkcjonalne, jak i niefunkcjonalne) lub różne wysoko-poziomowe modele opisujące jego funkcjonowanie (scenariusze użycia, procesy biznesowe, modele transakcji).
+Testy systemowe są przeprowadzane przez programistów lub niezależny zespół testowy, najlepiej w środowisku maksymalnie zbliżonym do docelowego.
+
+Testowanie systemowe może uwzględniać przydzielone poszczególnym funkcjom priorytety po to, aby w pierwszej kolejności były testowane najważniejsze dla klienta funkcje programu.
+Przegląd wybranych testów systemowych sprawdzających różne aspekty funkcjonowania programu:
+ - Testy funkcjonalne służą do sprawdzania działania programu pod kątem jego zgodności ze specyfikacją (strategia testowania „czarnej skrzynki”)
+ - Testy wydajnościowe służą do pomiaru i oceny czasu realizacji wybranych operacji (szybkości przetwarzania danych, liczby realizowanych w jednostce czasu transakcji, szybkości odczytu/ zapisu, czasu reakcji na zdarzenia, ...)
+ - Testy obciążeniowe służy do pomiaru i oceny zachowania programu przy zwiększającym się obciążeniu (liczbie równolegle pracujących użytkowników, liczbie transakcji, ...), oraz do sprawdzenia, przy jak dużym obciążeniu program jest jeszcze w stanie prawidłowo działać
+ - Testy przeciążające służą do oceny zachowania programu na granicy lub poza granicami wyspecyfikowanych wymagań
+ - Testy interfejsu użytkownika służą głównie do oceny jego poprawności funkcjonalnej oraz użyteczności (jakości i solidności wykonania, ergonomii, stopnia trudności jego obsługi, łatwości uczenia się interfejsu, szybkości działania, odporności na błędy użytkownika, zdolności do adaptacji, ...)
+ - Testy dostępności służą do oceny w jakim stopniu zastosowane rozwiązania pozwolą na użytkowanie programu przez osoby
+z dysfunkcjami (niewidome, niedowidzące, z zaburzoną motoryką)
+
+# Testy akceptacyjne
+Testowanie akceptacyjne jest finalnym etapem testowania zaimplementowanego programu, mającym na celu sprawdzenie, czy spełnia on wyspecyfikowane oczekiwania użytkownika i realizuje założone procesy biznesowe.
+Testy akceptacyjne przeprowadzane są przez użytkowników systemu lub ich reprezentantów przy współudziale przedstawicieli producenta, w docelowym środowisku pracy (z uwzględnieniem sprzętu i systemu operacyjnego).
+Testy akceptacyjne pozwalają formalnie ocenić jakość stworzonego oprogramowania, a także zweryfikować niejawne założenia i oczekiwania, poczynione zarówno przez klienta, jak i zespół producenta oprogramowania.
+Testy alfa są wewnętrznymi testami akceptacyjnymi, które są przeprowadzane przez potencjalnych użytkowników lub niezależny zespół testowy i odbywają się u producenta, ale bez udziału wytwórcy oprogramowania.
+Testy beta są zewnętrznymi testami akceptacyjnymi, które są przeprowadzane przez większe grupy użytkowników i odbywają się poza miejscem wytwarzania oprogramowania Testowanie beta jest podejściem często wykorzystywanym po to, aby uzyskać zwrotną informację z rynku dla tzw. oprogramowania „z półki”.
+
+# Niezawodność oprogramowania
+Niezawodność, obok takich cech jak: funkcjonalność, użyteczność, wydajność i wiele innych, jest elementem istotnie wpływającym na jakość oprogramowania.
+Niezawodność oprogramowania (wyrażana w sposób jakościowy lub ilościowy, jako wartość pewnej miary) jest często kryterium pojawiającym się w wymaganiach klienta.
+Określenie poziomu niezawodności pozwala:
+ - oszacować koszty serwisu, liczbę personelu, nakłady środków na konserwowanie oprogramowania
+ - ocenić i wdrożyć lepsze procedury wytwarzania oprogramowania, pozwalające na minimalizację ryzyka związanego z wytwarzaniem oprogramowania, redukcję kosztów, zwiększenie reputacji firmy
+
+Miary niezawodności oprogramowania:
+ - częstotliwość występowania błędnych wykonań – dla systemów nietransakcyjnych, liczba błędnych wykonań przypadająca na jednostkę czasu
+ - prawdopodobieństwo błędnego wykonania – dla systemów transakcyjnych, częstość występowania nieudanych (na skutek błędu) transakcji
+ - średni czas pomiędzy błędnymi wykonaniami
+ - dostępność – procentowo wyrażony stopień w jakim system będzie dostępny dla użytkownika wtedy, gdy będzie wymagane jego użycie (miarę tę można oszacować na podstawie stosunku czasu, w którym system działa prawidłowo, do czasu potrzebnego na naprawę błędów, skutkujących niedostępnością systemu)
+
+Niezawodność systemu wzrasta, jeżeli w trakcie poprawy zdiagnozowanych błędów, nie wprowadza się do kodu nowych błędów.
+W przypadku testów statystycznych wzrost niezawodności ma charakter logarytmiczny, wyrażony wzorem:
+>>>
+niezawodność = niezawodność_początkowa * exp(-C * liczba_testów)
+>>>
+gdzie stałą C należy oszacować dla każdego systemu na podstawie obserwacji statystycznych jego niezawodności.
+Szybszy wzrost niezawodności systemu można osiągnąć poprzez odpowiedni (nielosowy) dobór danych testowych.
 
 # 8. Literatura
  - Ron Patton, Testowanie oprogramowania, MIKOM, 2002
