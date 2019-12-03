@@ -31,10 +31,10 @@ https://www.atlassian.com/continuous-delivery/principles/continuous-integration-
 W wersji minimum jest to automatyczne budowanie i testowanie aplikacji przy operacji merge oraz przy wypchnięciu zmian do przeglądu.
 
 Popularne narzędzia:
- - Jenkins
- - Bamboo
- - Travis
- - CircleCI
+ - Jenkins - https://jenkins.io/
+ - Bamboo - https://www.atlassian.com/software/bamboo
+ - Travis - https://travis-ci.com/
+ - CircleCI - https://circleci.com/
  - gitlab
 
 # Knowledge sharing
@@ -43,7 +43,7 @@ Siłą środowiska programistycznego i testerskiego jest dzielenie się wiedzą.
  - spotkania i wydarzenia branżowe - nie trzeba od razu jechać na zagraniczną konferencję, ale można spróbować zaliczyć lokalne wydarzenia organizowane przez pajonatów. https://www.meetup.com/
  - jeśli twojego problemu nie ma na https://stackoverflow.com/ to opcje są dwie:
    - problem nie istnieje,
-   - jesteś bardzo głęboko w kropce ;-)
+   - jesteś bardzo głęboko w kropce (coś jak tu: https://m.facebook.com/AndrzejMilewskiRysuje/photos/a.964103033606163.1073741827.194112927271848/2026216694061453/?type=3&source=54)
 
 ## Plus atrakcyjność na rynku pracy
  - w IT liczą się umiejętności, wykształcenie jest miłym dodatkiem,
@@ -173,3 +173,26 @@ https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html#playbook
 https://docs.docker.com/get-started/part2/
 
 # Let's get it started
+ - repo
+ - Prosty backend:
+    - SpringBoot: https://start.spring.io/
+    - build, run
+    - test
+       - browser
+       - curl
+    - gitlab ci
+    - docker
+ - Prosty frontend:
+    - https://cli.angular.io/
+    - --style=scss
+    - build, run
+    - test
+       - browser
+    - gitlab ci
+ - Prosty backend JS:
+    - https://docs.nestjs.com/first-steps
+    - build run
+    - test
+       - browser
+       - curl
+    - gitlab ci
