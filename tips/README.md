@@ -42,18 +42,18 @@ Siłą środowiska programistycznego i testerskiego jest dzielenie się wiedzą.
  - open source - czyli otwarte oprogramowanie, z reguły dostępne nieodpłatnie. Świat jest pełen świetnego kodu dostępnego od ręki. Zawsze warto poszukać, czy ktoś nie napisał już potrzebnej biblioteki. Jeśli stworzymy coś dobrego, publiczne repozytoria kodu to świetny pomysł, żeby się podzielić oraz przy okazji podnieść swoją atrakcyjność rynkową.
  - spotkania i wydarzenia branżowe - nie trzeba od razu jechać na zagraniczną konferencję, ale można spróbować zaliczyć lokalne wydarzenia organizowane przez pajonatów. https://www.meetup.com/
  - jeśli twojego problemu nie ma na https://stackoverflow.com/ to opcje są dwie:
-  - problem nie istnieje,
-  - jesteś bardzo głęboko w kropce ;-)
+   - problem nie istnieje,
+   - jesteś bardzo głęboko w kropce ;-)
 
 ## Plus atrakcyjność na rynku pracy
  - w IT liczą się umiejętności, wykształcenie jest miłym dodatkiem,
  - nie musisz wiedzieć wszystkiego, ale musisz umieć się szybko uczyć,
  - znajomość podstawowego procesu, SCRUMa,
  - należy znać podstawy:
-  - podstawowe algorytmy i struktury danych,
-  - jakiś język programowania?
-  - jakieś środowisko programistyczne,
-  - git,
+   - podstawowe algorytmy i struktury danych,
+   - jakiś język programowania?
+   - jakieś środowisko programistyczne,
+   - git,
  - dzielenie się wiedzą, profil github/gitlab, udział w otwartym projekcie, udział w spotkaniach to solidne plusy,
  - praca własna to podstawa.
 
@@ -67,39 +67,39 @@ Siłą środowiska programistycznego i testerskiego jest dzielenie się wiedzą.
 
 # Języki programowania
  - Backend:
-  - Java
-  - Kotlin
-  - Scala
-  - Ruby
-  - PHP
-  - Python
-  - JS/Node
-  - ...
+   - Java
+   - Kotlin
+   - Scala
+   - Ruby
+   - PHP
+   - Python
+   - JS/Node
+   - ...
  - Frontend:
-  - JS/TS
-  - HTML/SCSS
+   - JS/TS
+   - HTML/SCSS
 
 # Biblioteki i frameworki
  - Backend:
-  - Spring/Boot/Java/Kotlin
-  - Micronaut/Java/Kotlin
-  - Ruby on Rails
-  - NestJS/NodeJS
-  - ...
+   - Spring/Boot/Java/Kotlin
+   - Micronaut/Java/Kotlin
+   - Ruby on Rails
+   - NestJS/NodeJS
+   - ...
  - Frontend:
-  - ReactJS
-  - AngularJS
-  - VueJS
-  - ...
+   - ReactJS
+   - AngularJS
+   - VueJS
+   - ...
  - Testerskie:
-  - JUnit
-  - Spring internals
-  - TestNG
-  - Mockito
-  - AssertJ
-  - Karma/Jasmine
-  - Jest
-  - ...
+   - JUnit
+   - Spring internals
+   - TestNG
+   - Mockito
+   - AssertJ
+   - Karma/Jasmine
+   - Jest
+   - ...
 
 ## Związane z paczkowaniem aplikacji
 - mvn
@@ -138,12 +138,12 @@ Każdy początkujący adept sztuki komputerowej podchodzi z rezerwą do konsoli,
 
  - Linux, MacOS - konsola sh, bash, zsh lub podobna, popularny i domyślny wybór do pisania skryptów; skrypty z tych środowisk mogą być przydatne także w środowisku Windows,
  - Windows:
-  - CMD - domyślna konsola nie pozwala na zbyt wiele, nieprzydatna,
-  - PowerShell -  na pewno jest power, ale zdaje się że tylko w środowisku Windows,
-  - alternatywy bashowe:
-    - https://www.cygwin.com/
-    - git bash, czyli powłoka która przychodzi wraz z instalacją gita
-    - Windows Linux Subsystem - czyli Linux na Windows. Działa, można korzystać
+   - CMD - domyślna konsola nie pozwala na zbyt wiele, nieprzydatna,
+   - PowerShell -  na pewno jest power, ale zdaje się że tylko w środowisku Windows,
+   - alternatywy bashowe:
+      - https://www.cygwin.com/
+      - git bash, czyli powłoka która przychodzi wraz z instalacją gita
+      - Windows Linux Subsystem - czyli Linux na Windows. Działa, można korzystać
 
 ## Narzędzia testerskie
 Czynnikiem decydującym jest rodzaj testowanego oprogramowania, więc poniższy przegląd jest bardzo orientacyjny i ma podłoże webowe:
