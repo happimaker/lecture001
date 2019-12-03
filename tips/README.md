@@ -130,6 +130,13 @@ Wybór środowiska jest podyktowany w pierwszej kolejności wspieranym zakresem 
 
 Jeśli nie wiesz co wybrać, to VS Code i plugin do wybranego języka będzie niezłą opcją.
 
+### Tips & tricks
+Należy zapoznać się ze swoim wybranym IDE.
+ - Po pierwsze integracja z językiem i technologią, której chcemy używać. Wirtualna maszyna, dodatkowe pluginy, formatter, linter itp.
+ - Wiemy gdzie są jakie widoki, dostęp do plików czy klas, różne formy wyszukiwania,
+ - Skróty klawiszowe, uczymy się, ćwiczymy i zapamiętujemy; znasz skróty, jesteś power user,
+ - **Czytamy podpowiedzi IDE! Nie wpisujemy słów kluczowych i identyfikatorów znak po znaku, obserwujemy co mówi środowisko. Unikniemy literówek, na początku znacząco ułatwimy sobie zarządzanie zależnościami.**
+
 ## System operacyjny
 Można pracować na dowolnym systemie, wszystko sprowadza się do rozumienia specyficznego ekosystemu aplikacji pomocniczych - niektóre narzędzia są wprost przenośne, inne nie. Każdy system ma swoje specyficzne cechy, wady i zalety. Należy je znać, żeby dostosować swoją maszynę do wydajnej pracy.
 
@@ -172,11 +179,14 @@ https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html#playbook
 ### Konteneryzacja - docker
 https://docs.docker.com/get-started/part2/
 
-# Let's get it started
+# Let's get it started/live
+Większość dostępnych języków i technologii dostarcza narzędzi, które pozwalają rozpocząć przygodę. Skorzystajmy z nich - usuwając początkowe trudności i przeszkody pozbędziemy się odrobiny złożoności, która na początku i tak jest bardzo duża.
+
  - repo
  - Prosty backend:
     - SpringBoot: https://start.spring.io/
     - build, run
+    - logika?
     - test
        - browser
        - curl
@@ -186,12 +196,15 @@ https://docs.docker.com/get-started/part2/
     - https://cli.angular.io/
     - --style=scss
     - build, run
+    - prosty widok?
     - test
        - browser
+       - cypress?
     - gitlab ci
  - Prosty backend JS:
     - https://docs.nestjs.com/first-steps
     - build run
+    - logika?
     - test
        - browser
        - curl
