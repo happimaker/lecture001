@@ -166,7 +166,10 @@ Czynnikiem decydującym jest rodzaj testowanego oprogramowania, więc poniższy 
  - SoapUI - aplikacja desktop do testowania komunikacji webowej, w szczególności SOAP. Można używać zamiennie z curl,
  - https://www.browserstack.com/
  - dev tools przeglądarki,
- - dedykowane dodatki do przeglądarki.
+ - dedykowane dodatki do przeglądarki,
+ - https://creditcardgenerator.com/
+ - https://bogus-z-polska.pl/generatory/all.html
+ - https://httpbin.org/
 
 Do przeczytania: 
  - https://pwicherski.gitbook.io/testowanie-oprogramowania/
