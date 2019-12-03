@@ -76,7 +76,7 @@ Siłą środowiska programistycznego i testerskiego jest dzielenie się wiedzą.
    - ...
  - Frontend:
    - JS/TS, JSON
-   - HTML/SCSS
+   - HTML/SCSS, xpath
    - YAML
  - DB:
    - SQL
