@@ -76,10 +76,13 @@ Siłą środowiska programistycznego i testerskiego jest dzielenie się wiedzą.
    - JS/Node
    - ...
  - Frontend:
-   - JS/TS
+   - JS/TS, JSON
    - HTML/SCSS
+   - YAML
+ - DB:
+   - SQL
 
-# Biblioteki i frameworki
+# Biblioteki, frameworki
  - Backend:
    - Spring/Boot/Java/Kotlin
    - Micronaut/Java/Kotlin
@@ -99,7 +102,12 @@ Siłą środowiska programistycznego i testerskiego jest dzielenie się wiedzą.
    - AssertJ
    - Karma/Jasmine
    - Jest
+   - Cucumber/Behave
+   - Selenium i web driver
    - ...
+ - Inne
+   - HTTP
+   - REST, RESTful
 
 ## Związane z paczkowaniem aplikacji
 - mvn
@@ -155,10 +163,18 @@ Każdy początkujący adept sztuki komputerowej podchodzi z rezerwą do konsoli,
 ## Narzędzia testerskie
 Czynnikiem decydującym jest rodzaj testowanego oprogramowania, więc poniższy przegląd jest bardzo orientacyjny i ma podłoże webowe:
  - curl i wget - wysyłanie żądań z konsoli,
+ - Postman - jw, ale jako aplikacja desktop/dodatek do przeglądarki,
  - SoapUI - aplikacja desktop do testowania komunikacji webowej, w szczególności SOAP. Można używać zamiennie z curl,
  - https://www.browserstack.com/
- - dev tools przeglądarki
- - dedykowane dodatki do przeglądarki
+ - dev tools przeglądarki,
+ - dedykowane dodatki do przeglądarki.
+
+Do przeczytania: 
+ - https://pwicherski.gitbook.io/testowanie-oprogramowania/
+ - https://sjsi.org/ist-qb/do-pobrania/
+ - https://www.udemy.com/course/kurs-selenium-python/
+
+Do rozważenia kurs/egzamin ISTQB. Materiał jest bardzo teoretyczny, ale pojęcia są powszechnie używane.
 
 ## DevOps
 Czyli programiści i administratorzy w jednym worku. Tworzenie oprogramowania bliskie jego osadzaniu/instalacji/dostarczaniu. Dużo zależy od przyjętego modelu instalacji systemu, na pewno można rozważać fizyczne serwery, maszyny wirtualne czy kontenery. Zależnie od używanych platform i systemów operacyjnych warto znać narzędzia do zdalnego dostępu:
