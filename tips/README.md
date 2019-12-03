@@ -1,9 +1,8 @@
 
-
 # Co z tym IT?
 Co ja robię na SPIO?
 
-# Oragnizacja pracy, zarządzanie projektem
+# Organizacja pracy, zarządzanie projektem
 
 ## SCRUM
 https://www.scrumguides.org/scrum-guide.html
